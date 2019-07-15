@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 26, 2019, 4:18:38 AM
+    Author     : godlove
+*/
+
+body {
+  /*background-color: red;*/
+}
+input:hover{
+    border-color: #DE7A22;
+    border-width: 1px;
+}
+#header {
+    margin-bottom: 15px;
+}
+#nownow{
+    font-family: Times New Roman;
+    font-weight: bold;
+    color: yellow;
+}
