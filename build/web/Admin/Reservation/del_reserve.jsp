@@ -16,7 +16,9 @@
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
             Statement statement = con.createStatement();
-            String query = "DELETE FROM reserve WHERE id="+str;
+            String query = "DELETE FROM reserve WHERE room_id="+str;
+//            String quiery = "DELETE *  FROM rooms, reserve WHERE rooms.id='"+str+"' AND reserve.room_id='"+str+"'";
+
             int i = statement.executeUpdate(query);
             
             if(i == 1){

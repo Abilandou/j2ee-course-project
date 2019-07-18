@@ -62,11 +62,11 @@
                             <form class="UserLoginForm" name="loginForm" action="./controllers/loginHandle.jsp" method="post">
                                 <div class="form-group mb-3">
                                     <label class="text-dark">Email</label>
-                                    <input type="email" 
+                                    <input type="text" 
                                         name="email" 
                                         id="user_email" 
                                         class="form-control"
-                                        placeholder="Enter Your Email"
+                                        placeholder="name"
                                         required
                                     >
                                 </div>
@@ -76,7 +76,7 @@
                                         name="password"
                                         id="user_password"
                                         class="form-control"
-                                        placeholder="Enter Your Password"
+                                        placeholder="password"
                                         required
                                     >
                                 </div>

@@ -18,7 +18,7 @@
 
     </head>
 <body>
-    <div class="container-fluid" style="margin-left: 70px;">
+<div class="container-fluid" style="margin-left: 70px;">
     <div class="row">
         <div class="col-sm-12">
             <div>
@@ -26,7 +26,7 @@
                 <div class="divider"></div>
                 <br><br>
                 
-                <span style="font-family: Times New Roman; font-size: 17px; padding-bottom: 10px;" class="text-justify">
+                <span style="font-family: Times New Roman; font-size: 17px; padding-bottom: 10px; text-align:justify" class="text-justify">
                     Our Hotel is found in a city that never sleeps, but surely you will 
                     want to catch a few winks between activities. The Beautiful hotel 
                     rooms and suites at <b title="Home page" ><a href="./index.jsp" class="pink-text">CEF502 Hotel</a></b> are comfortable, neat, 
@@ -50,7 +50,8 @@
             </div><br>
             <div class="divider"></div>
             <br>
-          <div class="widget-content nopadding">
+            
+          <div class="col-12>
             <%   
                String id = request.getParameter("id");
 
@@ -63,10 +64,7 @@
                 Connection conn = null;
                 Statement statement = null;
                 ResultSet resultSet = null;
-
             %>
-
-            
             <%
 
                 try{
@@ -79,40 +77,44 @@
                     while(resultSet.next()){
 
             %>
-            
-            <div class="card hoverable mx-1 col-sm-4"  style="width:350px; height:450px; margin-right: 15px;">
-		<div class="card-image waves-effect waves-block waves-light">
-			<a href="./room_details.jsp?uid=<%=resultSet.getString("id")  %>" id="add-to-card-button">
-                            <img src="hotel1.png" alt=""/>
-			</a>
-		</div>
-                <div class="card-content">
-                        <span class="card-title dark-text darken-4"><%=resultSet.getString("name")  %></span>
-                        <p><i class="pink-text">FCFA<%=resultSet.getString("price")  %>/day</i><i class="pull-right"><i class="material-icons prefix teal-text">category</i>:<%=resultSet.getString("category")  %></i></p><br/>
-                        <p><%=resultSet.getString("description")  %></p><br>
-                        <p class="mt-3"><a href="./room_details.jsp?uid=<%=resultSet.getString("id")  %>" class="btn mr-2">Learn More</a>
-                            <a href="#" class="pull-right">Add To Whishlist</a>
-                        </p>
+            <div class="">
+            <div class="row card">
+                <div class="col-12">
+                    <div class="col-sm-5">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <a href="./room_details.jsp?uid=<%=resultSet.getString("id")  %>" id="add-to-card-button">
+                            <img style="margin:20px;" src="hotel1.png" alt=""/>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="col-sm-7">
+                         <h2 class="card-title mt-4 text-darken-4" style="margin-left:50px;"><%=resultSet.getString("name")  %></h2>
+                        <div class="divider"></div>
+                        <div class="col-sm-8 mt-2">
+                            <p> 
+                                FCFA<b class="orange-text"><%=resultSet.getString("price")  %></b>
+                                <i class="right">Category: <b class="orange-text"><%=resultSet.getString("category")  %></b></i>
+                            </p><br/>
+                            <p style="text-align:justify"><%=resultSet.getString("description")  %></p><br/>
+                            <a href="./room_details.jsp?uid=<%=resultSet.getString("id")  %>" class="btn btn-danger mr-2 right">Learn More<i class="material-icons prefix"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            
-
-    
+        </div>
             <%
                     }//End while loop
                 }catch(Exception e){
                     e.printStackTrace();
                 }
 
-            %>
-            
+            %>  
     </div>
    </div>
-      </div>
+ </div>
+<div class="row-fluid">
+  <%@include file="includes/footer.jsp"  %>
+</div>
 
-  </div>
-    
-    <%@include file="includes/footer.jsp"  %>
 </body>
 </html>

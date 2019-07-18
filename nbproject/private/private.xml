@@ -3,23 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/about.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/search_item.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/includes/footer.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/add_rooms.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/update_room.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/meal_order.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/src/java/TestClass.java</file>
             <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/reserve.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/includes/admin_sidebar.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/includes/header.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/rooms.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/view_categories.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Login.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/view_rooms.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/contact.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/booking.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/room_details.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/index.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/view_reserved.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/TestClass.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/meals.jsp</file>
         </group>
     </open-files>
 </project-private>

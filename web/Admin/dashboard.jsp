@@ -137,6 +137,16 @@
             </div>
           </div>
         </a>
+          <a href="./meals.jsp">
+          <div class="col m4 s6">
+            <div class="card hoverable teal lighten-3 white-text">
+              <div class="card-content">
+                <p class="center"><i class="large material-icons"></i></p>
+                <h4 class="center-align flow-text">Meal Orders<span class="new badge  orange white-text">3</span></h4>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>

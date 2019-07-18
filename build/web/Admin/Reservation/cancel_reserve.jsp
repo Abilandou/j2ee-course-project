@@ -16,7 +16,7 @@
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
             Statement statement = con.createStatement();
-            String query = "UPDATE reserve SET status='"+0+"' WHERE id="+str;
+            String query = "UPDATE rooms SET booked='"+0+"' WHERE id="+str;
             int i = statement.executeUpdate(query);
             
             if(i == 1){

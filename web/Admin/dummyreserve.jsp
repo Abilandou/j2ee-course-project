@@ -14,6 +14,10 @@
         <!--close-Header-part--> 
         <%@include file="AllAdminIncludes.jsp"  %>
         <%@page import="java.sql.*" %>
+        <%@page import="java.text.DateFormat"%>
+        
+        <%@page import="java.text.SimpleDateFormat"%>
+        <%@page import="java.util.Calendar" %> 
     </head>
 
 <body>
@@ -74,7 +78,7 @@
                 String  room_id,  customer_name, customer_email, cost_per_day;
                 String check_in, check_out, from_time, to_time, adults, children;
                 int number_of_days, amount_due, one_day_cost;
-                
+      
                 
                 //Calculatin the amount due to insert in the database.
 
@@ -87,11 +91,30 @@
                 to_time =request.getParameter("to_time");
                 adults=request.getParameter("adults");
                 children=request.getParameter("children");
+                cost_per_day=request.getParameter("cost_per_day");
                 
-//                
 //                number_of_days = Integer.parseInt(check_out) - Integer.parseInt(check_in);
-//                one_day_cost = Integer.parseInt(cost_per_day);
-//                amount_due = number_of_days * one_day_cost;
+               
+                
+                SimpleDateFormat dateformat = new SimpleDateFormat ("E    yyyy.MM.dd"); //SDF to display output with day of week
+
+                Date in_date=new Date(Long.parseLong(check_in)); //Turning the inputed date from string
+                                                   //to date format to be used for the output
+                Date out_date=new Date(Long.parseLong(check_out));
+
+                number_of_days = (int) ((out_date.getTime() - in_date.getTime())/(1000*60*60*24));//common method to calculate number of days
+                one_day_cost = Integer.parseInt(cost_per_day);
+                amount_due = number_of_days * one_day_cost;
+                
+//                    SimpleDateFormat datformat = new SimpleDateFormat ("E    yyyy.MM.dd"); //SDF to display output with day of week
+//
+//                Date displaydate1=new Date(date1); //Turning the inputed date from string
+//                                                   //to date format to be used for the output
+//                Date displaydate2=new Date(date2);
+//
+//                int differenceInDays = (int) ((displaydate2.getTime() - displaydate1.getTime())/(1000*60*60*24));//common method to calculate number of days
+
+                
                
                 
                 PreparedStatement preparestmnt = null; //Create statement
@@ -106,9 +129,11 @@
                 preparestmnt.setString(5, from_time);
                 preparestmnt.setString(6, check_out);
                 preparestmnt.setString(7, to_time);
+//                preparestmnt.setInt(8, number_of_days);
                 preparestmnt.setString(8, adults);
                 preparestmnt.setString(9, children);
-
+//                preparestmnt.setString(11, cost_per_day);
+//                preparestmnt.setInt(12, amount_due);
                 preparestmnt.executeUpdate(); //execute query
                 
                 String message = "Reservation made successfully";
@@ -122,7 +147,6 @@
             }
                  
               %>  
-              
                 <form action="reserve.jsp" method="post"  id="reserve_form">
                     <div class="form-group">
                         <label class="text-dark lead">Room Name<span class="text-danger">*</span></label>
@@ -200,13 +224,13 @@
                             >
                         </div> 
                     </div>
-                    <input required 
+<%--<!--                    <input required 
                         class="form-control" 
                         type="hidden" name="number_of_days"
                         value="number_of_days"
                         id="numdays"
-                    >
-                    <div class="form-group">
+                    >-->
+<!--                    <div class="form-group">
                         <label class="text-dark lead">One Day Cost<span class="text-danger">*</span></label>
                         <input required 
                             class="form-control" 
@@ -214,7 +238,7 @@
                             id="costaday" 
                             min="1"
                         >
-                    </div>
+                    </div>--> --%>
                     <div class="form-group">
                         <label class="text-dark lead">Adults<span class="text-danger">*</span></label>
                         <input required 
@@ -235,12 +259,12 @@
                             min="0"
                         >
                     </div>
-                    <input required 
+<!--                    <input required 
                         class="form-control" 
                         type="hidden" name="amount_due"
                         value="amount_due"
                         id="numdays"
-                    >
+                    >-->
                     <div class="form-group">
                         <input type="submit" name="reserveBut" value="Make Reservation" class="btn pull-right">
                     </div>
@@ -251,7 +275,7 @@
     </div>
 </div>     
 <script>
-     $(document).ready(function(){
+    $(document).ready(function(){
         var check_in_date = $("#check_in").val();
         var check_out_date = $("#check_out").val();
         var in_date = new Date(check_in_date); 

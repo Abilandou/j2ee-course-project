@@ -22,14 +22,22 @@
             <a href="index.jsp">Please Login</a>
         <%} else {
         %>
-            Welcome <%=session.getAttribute("email")%>
-            <a href='logout.jsp'>Log out</a>
+        <div class="left" style="margin: 30px; border-radius: 8px;" >
+            <p class="">Welcome <%=session.getAttribute("email")%></p>
+        </div>
+            
         <%
             }
         %>
+        <br/><br/><br/><br/>
         
+        <div class="jumbotron center-align">
+            <h5>Welcome to the account page</h5><br/>
+            <p class="bg-info" >Page Still under development</p>
+        </div>
         
-        <h1>Welcome to the account page</h1>
+        <div class="row-fluid" style="margin-top: 80px;">
+         <%@include file="includes/footer.jsp"  %>
+        </div>
     </body>
-    <%@include file="includes/footer.jsp"  %>
 </html>

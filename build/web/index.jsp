@@ -16,36 +16,165 @@
     <title>Home</title>
 </head>
 <body style="border: 0;">
+<section>
+  <img  class="img-fluid" src="hotel1.png" alt="Norway"
+        style="
+            opacity:0.5;
+            background-color:black;
+            margin-top:-120px;
+            width:100%;
+            height:400px;
+        "
+  >
+  <div class="text-block"
+       style="
+          position: absolute;
+          bottom: 400px;
+          left: 20px;
+          background-color: teal;
+          padding: 20px;
+          border-radius:8px;
+          color:pink;
+
+        "
+        >
+    <h4 class="" >THE NEW ERA</h4>
+      <a href="./rooms.jsp" ><p class="btn btn-danger">get started<i class="material-icons prefix">trending_flat</i></p></a>
+  </div>
+</section>
     
-    <div class="container-fluid" style="backgroud-color:blue; margin-top:-15px; margin-right: 0px;">
-    <div class="row ">
-        <div class="col-md-2 col-sm-2 col-xm-2 col-lg-2 pull-left">
-        
-                <div class="image">
-                    <img class="card" style="opacity: 0.3" src="hotel1.png" height="500" width="1230" alt="imag-loading">
+<section style="margin-bottom: 200px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Our Services.</h5>
+                <div class="col-sm-4 teal">
+                    <p>Room Reservation Room Reservation Room Reservation</p>
                 </div>
-        </div>
-       
-        <div class="col-md-10 col-sm-10 col-xm-10 col-lg-10" style="color:black;">
-            <div style="margin-top:35px; font-size:20px;">
-                <p id="fbeauty"><b><i><marquee> Awesome And Beautiful Rooms For You.</marquee></i></b></p>
-                <p id="sbeauty"><b><i><marquee> Awesome And Beautiful Rooms For You.</marquee></i></b></p>
+                <div class="col-sm-4 red">
+                    <p>Booking Services Booking Services Booking Services</p>
+                </div>
+                <div class="col-sm-4 grey">
+                    <p>Restaurants Restaurants Restaurants Restaurants</p>
+                </div>
+                <div class="col-sm-4 orange">
+                    <p>Sporting Sporting Sporting Sporting Sporting</p>
+                </div>
+                <div class="col-sm-4 blue">
+                    <p>Swimming Pool Swimming Pool Swimming Pool</p>
+                </div>
+                <div class="col-sm-4 yellow">
+                    <p>Logging Facility Logging Facility Logging Facility</p>
+                </div>
             </div>
-            <div class="container" style="margin-top: 80px; margin-left: 180px;">
-                
-                <h3 class="pink-text darken-4" >Welcome To CEF502 Hotel</h3>
-                <a href="./rooms.jsp" class="btn" style="margin-left: 200px;">get started</a>
-            </div>
         </div>
-    </div> 
-</div>
+    </div>
+</section>
     
-    <script>
-        $(document).ready(function(){
-            $("#sbeauty").hide();
-           $("#fbeauty").fadeIn(now);
-        });
-    </script>
+<section>
+  <img  class="img-fluid" src="hotel1.png" alt="Norway"
+        style="
+            opacity:0.5;
+            background-color:black;
+            margin-top:-120px;
+            width:100%;
+            height:400px;
+        "
+  >
+  <div class="text-block"
+       style="
+          position: absolute;
+          bottom: 400px;
+          left: 20px;
+          background-color: teal;
+          padding: 20px;
+          border-radius:8px;
+          color:pink;
+
+        "
+        >
+    <h4 class="" >THE NEW ERA</h4>
+      <a href="./rooms.jsp" ><p class="btn btn-danger">get started<i class="material-icons prefix">trending_flat</i></p></a>
+  </div>
+</section>
+    
+<section>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-12">
+                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Sporting Facilities</h5>
+                <div class="col-sm-6">
+                    <p class="text-justify">
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear 
+                        Put in so many text hear Put in so many text hear Put in so many text hear 
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                    
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="hotel1.png" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-12">
+                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Swimming Facility.</h5>
+                <div class="col-sm-6">
+                    <p class="text-justify">
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear 
+                        Put in so many text hear Put in so many text hear Put in so many text hear 
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="hotel1.png" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-12">
+                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Bus Service.</h5>
+                <div class="col-sm-6">
+                    <p class="text-justify">
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                        Put in so many text hear Put in so many text hear Put in so many text hear 
+                        Put in so many text hear Put in so many text hear Put in so many text hear 
+                        Put in so many text hear Put in so many text hear Put in so many text hear
+                    
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="hotel1.png" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     
     <%@include file="includes/footer.jsp"  %>
 </body>

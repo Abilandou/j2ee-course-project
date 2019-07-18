@@ -41,17 +41,18 @@
     <div class="container"> 
         <div class="col-sm-3 col-mm-3 col-xm-3 col-lg-3"></div>
         
+        
         <div class="col-sm-6 z-depth-4 card hoverable " id="logindiv" style="background-color: white; margin-top: 150px; border-radius: 18px; height: 250px;">
-            <form id="loginform" class="form-vertical" action="<%=request.getContextPath() %>/Admin/dashboard.jsp" method="post">
+            <form id="loginform" class="form-vertical" action="./dashboard.jsp" method="post">
                 <div class="control-group text-danger"> <h4>CEF502 Hotel Admin Login</h4></div>
                 <div class="form-group">
-                    <i class="fa fa-user fa-lg"> </i><input class="form-control" required="" type="email" placeholder="Email" />
+                    <i class="fa fa-user fa-lg"> </i><input class="form-control" required="" type="text" name="name" placeholder="name" />
                 </div>
                 <div class="form-group">
-                    <i class="fa fa-lock fa-lg"></i><input type="password" required="" class="form-control" placeholder="Password" />
+                    <i class="fa fa-lock fa-lg"></i><input type="password" name="password" required="" class="form-control" placeholder="Password" />
                 </div>
                 <div class="form-actions">
-                    <input type="submit" name="login" id="adminLoginBut" value="Login" class="lead "
+                   <input type="submit" name="adminLoginBut" id="adminLoginBut" value="Login" class="lead "
                     style="
                        background-color: hotpink;
                        border-radius: 12px;

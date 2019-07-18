@@ -24,6 +24,9 @@
     <li class="collection-item avatar">
       <a href="./requests.jsp" class="tooltipped" data-position="right" title="Reservation Requests" data-delay="50" data-tooltip="Reservation Requests"><i class="material-icons circle orange">book</i></a>
     </li>
+    <li class="collection-item avatar">
+      <a href="./meals.jsp" class="tooltipped" data-position="right" title="Meals" data-delay="50" data-tooltip="Meals"><i class="material-icons circle yellow">money</i></a>
+    </li>
     
 
   </ul>

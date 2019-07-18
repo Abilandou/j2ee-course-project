@@ -220,7 +220,7 @@
                                 <div class="jumbotron">
                                     <div class="row-fluid">
                                         <div>
-                                            <h6>Verify Your Email and Complete Booking</h6>
+                                            <h6>Verify Your Name and Complete Booking</h6>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -231,7 +231,7 @@
                                                <% //response.sendRedirect("Login.jsp"); %>
                                            <%} else {
                                            %>
-                                            <div class="col-sm-9"><h6> Email: <%=session.getAttribute("email")%></h6></div>
+                                            <div class="col-sm-9"><h6> Name: <%=session.getAttribute("email")%></h6></div>
                                            <%
                                                }
                                            %>

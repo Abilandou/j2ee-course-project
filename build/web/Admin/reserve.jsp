@@ -31,6 +31,37 @@
             <div class="col-md-7 card hoverable">
                 
                 <h6>Required Fields are marked(<b class="text-danger">*</b>)</h6>  
+                
+                
+                <%
+                    try{
+                    Class.forName("com.mysql.jdbc.Driver");
+
+                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");         
+                    if(request.getParameter("reserveBut") != null){
+                        
+                        String theid;
+                        theid=request.getParameter("room_id");
+                         String query = "UPDATE rooms SET booked='"+1+"' WHERE id='"+theid+"'";
+                        Statement stat = con.createStatement();
+//                        ResultSet rs = stat.executeQuery(query);
+                            int i = stat.executeUpdate(query);
+                            if(i == 1){
+//                                response.sendRedirect("./view_reserved.jsp");
+//                                out.println("<h4 class='text-danger'>Sorry, Update not successfull</h4>");
+                            }
+                            else{
+                 //              out.println("<h4 class='text-danger'>Sorry, Update not successfull</h4>");
+                            }
+                      
+
+                       
+                    }
+                    }catch(Exception e){
+                        out.println(e);
+                    }
+               
+                %>
                 <%
                  
                try{
@@ -40,42 +71,44 @@
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
             
             if(request.getParameter("reserveBut") != null){
-                String name, number,  customer_name, customer_email, booked;
+                String  room_id,  customer_name, customer_email, cost_per_day;
                 String check_in, check_out, from_time, to_time, adults, children;
+                int number_of_days, amount_due, one_day_cost;
                 
                 
                 //Calculatin the amount due to insert in the database.
-                
-                
-                name=request.getParameter("name");
-                number=request.getParameter("number");
+
+                room_id=request.getParameter("room_id");
                 customer_name=request.getParameter("customer_name");
                 customer_email =request.getParameter("customer_email");
-                booked =request.getParameter("booked");
                 check_in =request.getParameter("check_in");
                 from_time =request.getParameter("from_time");
                 check_out=request.getParameter("check_out");
                 to_time =request.getParameter("to_time");
                 adults=request.getParameter("adults");
                 children=request.getParameter("children");
+                
+//                
+//                number_of_days = Integer.parseInt(check_out) - Integer.parseInt(check_in);
+//                one_day_cost = Integer.parseInt(cost_per_day);
+//                amount_due = number_of_days * one_day_cost;
                
                 
                 PreparedStatement preparestmnt = null; //Create statement
+                String querry1 = "insert into reserve(room_id,"+
+                        "customer_name, customer_email, check_in, from_time, check_out, to_time, adults, children) values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                preparestmnt = con.prepareStatement(querry1);
                 
-                preparestmnt = con.prepareStatement("insert into rooms( name, number,"+
-                        "customer_name, customer_email, booked, check_in, from_time, check_out, to_time, adults, children) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-                
-                preparestmnt.setString(1, name);
-                preparestmnt.setString(2, number);
-                preparestmnt.setString(3, customer_name);
-                preparestmnt.setString(4, customer_email);
-                preparestmnt.setString(5, booked);
-                preparestmnt.setString(6, check_in);
-                preparestmnt.setString(7, from_time);
-                preparestmnt.setString(8, check_out);
-                 preparestmnt.setString(9, to_time);
-                preparestmnt.setString(10, adults);
-                preparestmnt.setString(11, children);
+                preparestmnt.setString(1, room_id);
+                preparestmnt.setString(2, customer_name);
+                preparestmnt.setString(3, customer_email);
+                preparestmnt.setString(4, check_in);
+                preparestmnt.setString(5, from_time);
+                preparestmnt.setString(6, check_out);
+                preparestmnt.setString(7, to_time);
+                preparestmnt.setString(8, adults);
+                preparestmnt.setString(9, children);
+
                 preparestmnt.executeUpdate(); //execute query
                 
                 String message = "Reservation made successfully";
@@ -93,7 +126,7 @@
                 <form action="reserve.jsp" method="post"  id="reserve_form">
                     <div class="form-group">
                         <label class="text-dark lead">Room Name<span class="text-danger">*</span></label>
-                        <select name="name" required="" class="form-control">
+                        <select name="room_id" required="" class="form-control">
                              <option value="">Select Room</option>
                              <% 
                                  try{
@@ -107,7 +140,7 @@
 
                                     while(rs.next()){
                                         %>
-                                        <option value="<%=rs.getString("name")  %>"><%=rs.getString("name")  %></option>
+                                        <option value="<%=rs.getString("id")%>"><%=rs.getString("name")  %></option>
                                         <%
                                     }
                                     }catch(Exception e){
@@ -116,15 +149,6 @@
                               %>
 
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark lead">Room Number<span class="text-danger">*</span></label>
-                        <input required 
-                            class="form-control" 
-                            type="text" name="number" 
-                            id="number" 
-                            required
-                        >
                     </div>
                     <div class="form-group">
                         <label class="text-dark lead">Guest Name<span class="text-danger">*</span></label>
@@ -144,11 +168,6 @@
                             required
                         >
                     </div>
-                    <input
-                        class="form-control" 
-                        type="hidden" name="booked" 
-                        value="1"
-                    >
                     <div class="col-sm-12">
                         <div class="col-sm-6">
                             <label class="text-dark lead">Check In<span class="text-danger">*</span></label>
@@ -181,6 +200,21 @@
                             >
                         </div> 
                     </div>
+                    <input required 
+                        class="form-control" 
+                        type="hidden" name="number_of_days"
+                        value="number_of_days"
+                        id="numdays"
+                    >
+                    <div class="form-group">
+                        <label class="text-dark lead">One Day Cost<span class="text-danger">*</span></label>
+                        <input required 
+                            class="form-control" 
+                            type="number" name="cost_per_day" 
+                            id="costaday" 
+                            min="1"
+                        >
+                    </div>
                     <div class="form-group">
                         <label class="text-dark lead">Adults<span class="text-danger">*</span></label>
                         <input required 
@@ -188,6 +222,7 @@
                             type="number" name="adults" 
                             id="adults" 
                             value="1"
+                            min="1"
                         >
                     </div>
                     <div class="form-group">
@@ -197,8 +232,15 @@
                             type="number" name="children" 
                             id="children" 
                             value="0"
+                            min="0"
                         >
                     </div>
+                    <input required 
+                        class="form-control" 
+                        type="hidden" name="amount_due"
+                        value="amount_due"
+                        id="numdays"
+                    >
                     <div class="form-group">
                         <input type="submit" name="reserveBut" value="Make Reservation" class="btn pull-right">
                     </div>
@@ -208,7 +250,18 @@
         </div>
     </div>
 </div>     
-        
+<script>
+     $(document).ready(function(){
+        var check_in_date = $("#check_in").val();
+        var check_out_date = $("#check_out").val();
+        var in_date = new Date(check_in_date); 
+        var out_date = new Date(check_out_date);
+        if((in_date > out_date) || (out_date < in_date)){
+            alert("Check out date can not be less than check in date ");
+            return false;
+        }
+    });
+</script>
 <div>
   <%@include file="./includes/admin_footer.jsp" %>
 </div>

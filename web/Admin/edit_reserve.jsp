@@ -29,26 +29,25 @@
           <%
       
           String strl = request.getParameter("uid");
-          String str1 = request.getParameter("room_name");
-          String str2 = request.getParameter("room_number");
-          String str3 = request.getParameter("customer_name");
-          String str4 = request.getParameter("customer_email");
-          String str5 = request.getParameter("check_in");
-          String str6 = request.getParameter("from_time");
-          String str7 = request.getParameter("check_out");
-          String str8 = request.getParameter("to_time");
-          String str9 = request.getParameter("adults");
-          String str10 = request.getParameter("children");
-          String str11 = request.getParameter("amount_due");
-          String str12 = request.getParameter("status");
-          String str13 = request.getParameter("hid");
+          String str1 = request.getParameter("room_id");
+          String str2 = request.getParameter("customer_name");
+          String str3 = request.getParameter("customer_email");
+          String str4 = request.getParameter("check_in");
+          String str5 = request.getParameter("from_time");
+          String str6 = request.getParameter("check_out");
+          String str7 = request.getParameter("to_time");
+          String str8 = request.getParameter("adults");
+          String str9 = request.getParameter("children");
+          String str10 = request.getParameter("amount_due");
+          String str11 = request.getParameter("status");
+          String str12 = request.getParameter("hid");
           
        try{
            Class.forName("com.mysql.jdbc.Driver");
             
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502?allowMultiQueries=true", "godlove", "godlove");
             Statement stat = con.createStatement();
-            String query = "UPDATE reserve SET room_name='"+str1+"', room_number='"+str2+"', customer_name='"+str3+"', status='"+str12+"', customer_email='"+str4+"', check_in='"+str5+"', from_time='"+str6+"', check_out='"+str7+"', to_time='"+str8+"', adults='"+str9+"', children='"+str10+"', amount_due='"+str11+"' WHERE id='"+str13+"'";
+            String query = "UPDATE reserve SET room_id='"+str1+"', customer_name='"+str2+"', status='"+str11+"', customer_email='"+str3+"', check_in='"+str4+"', from_time='"+str5+"', check_out='"+str6+"', to_time='"+str7+"', adults='"+str8+"', children='"+str9+"', amount_due='"+str10+"' WHERE id='"+str12+"'";
            int i = stat.executeUpdate(query);
            if(i == 1){
                response.sendRedirect("./view_reserved.jsp");
@@ -86,8 +85,8 @@
                        <input type="hidden" name="hid" value="<%=rs.getString("id")  %>" >
                         <div class="form-group">
                             <label class="text-dark lead">Room Name<span class="text-danger">*</span></label>
-                            <select name="room_name" required="" class="form-control">
-                                 <option value="<%=rs.getString("room_name") %>"><%=rs.getString("room_name") %></option>
+                            <select name="room_id" required="" class="form-control">
+                                 <option value=" ">Select Room </option>
                                  <% 
                                      try{
 
@@ -100,7 +99,7 @@
 
                                         while(rsl.next()){
                                             %>
-                                            <option value="<%=rsl.getString("name")  %>"><%=rsl.getString("name")  %></option>
+                                            <option value="<%=rsl.getString("id")  %>"><%=rsl.getString("name")  %></option>
                                             <%
                                         }
                                         }catch(Exception e){
@@ -109,16 +108,6 @@
                                   %>
 
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="lead">Room Number<span class="text-danger">*</span></label>
-                            <input
-                                class="form-control" 
-                                type="text" name="room_number" 
-                                value="<%=rs.getString("room_number") %>"
-                                id="number" 
-                                required
-                            >
                         </div>
                         <div class="form-group">
                             <label class="text-dark lead">Guest Name<span class="text-danger">*</span></label>
@@ -140,11 +129,6 @@
                                 required
                             >
                         </div>
-                        <input
-                            class="form-control" 
-                            type="hidden" name="status" 
-                            value="1"
-                        >
                         <div class="col-sm-12">
                             <div class="col-sm-6">
                                 <label class="text-dark lead">Check In<span class="text-danger">*</span></label>
