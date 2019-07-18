@@ -102,8 +102,13 @@
             String query = "UPDATE  rooms  SET booked='"+1+"' WHERE id='"+strt+"'";
            int i = stat.executeUpdate(query);
            if(i == 1){
-               response.sendRedirect("./thanks_booking.jsp");
-               out.println("<h4 class='text-danger'>Sorry, Unable To Book this room at this moment</h4>");
+               if((session.getAttribute("email") == null) || (session.getAttribute("email") == "")){
+                   response.sendRedirect("./Login.jsp");
+               }else{
+                    response.sendRedirect("./thanks_booking.jsp");
+                    out.println("<h4 class='text-danger'>Sorry, Unable To Book this room at this moment</h4>");
+               }
+              
            }
            else{
 //              out.println("<h4 class='text-danger'>Sorry, Update not successfull</h4>");
