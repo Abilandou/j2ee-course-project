@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 15, 2019 at 04:39 AM
+-- Generation Time: Jul 18, 2019 at 11:35 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -459,6 +459,33 @@ INSERT INTO `guest` (`id`, `name`, `email`, `phone`, `country`, `adults`, `child
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `meals`
+--
+
+CREATE TABLE `meals` (
+  `id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `guest_id` int(11) DEFAULT NULL,
+  `meal_type` varchar(100) NOT NULL,
+  `number_of_plates` int(11) DEFAULT NULL,
+  `amount_per_plate` int(11) DEFAULT NULL,
+  `total_amount` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `meals`
+--
+
+INSERT INTO `meals` (`id`, `room_id`, `guest_id`, `meal_type`, `number_of_plates`, `amount_per_plate`, `total_amount`, `created_at`, `updated_at`) VALUES
+(1, 9, 1, 'Break Fast', 3, 1000, 3000, '2019-07-18 03:46:10', '0000-00-00 00:00:00'),
+(2, 9, 21, 'Launch', 2, 1500, 3000, '2019-07-18 04:03:40', '0000-00-00 00:00:00'),
+(3, 5, 22, 'Supper', 2, 3000, 6000, '2019-07-18 04:35:03', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `positions`
 --
 
@@ -489,18 +516,17 @@ INSERT INTO `positions` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `reserve` (
   `id` int(11) NOT NULL,
-  `room_id` int(11) DEFAULT '0',
-  `room_number` varchar(30) DEFAULT NULL,
-  `room_name` varchar(255) DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
   `customer_name` varchar(255) DEFAULT NULL,
   `customer_email` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT '0',
   `check_in` date DEFAULT NULL,
-  `from_time` time NOT NULL,
-  `check_out` date NOT NULL,
+  `from_time` time DEFAULT NULL,
+  `check_out` date DEFAULT NULL,
   `to_time` time DEFAULT NULL,
-  `adults` int(11) NOT NULL,
+  `number_of_days` int(11) DEFAULT NULL,
+  `adults` int(11) DEFAULT NULL,
   `children` int(11) DEFAULT NULL,
+  `cost_per_day` varchar(11) DEFAULT NULL,
   `amount_due` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -510,10 +536,12 @@ CREATE TABLE `reserve` (
 -- Dumping data for table `reserve`
 --
 
-INSERT INTO `reserve` (`id`, `room_id`, `room_number`, `room_name`, `customer_name`, `customer_email`, `status`, `check_in`, `from_time`, `check_out`, `to_time`, `adults`, `children`, `amount_due`, `created_at`, `updated_at`) VALUES
-(1, 0, 'HUYROWI', 'Home sweet home', 'Godlove Abilandou', 'godloveabilandou@gmail.com', 0, '2019-07-06', '00:00:00', '2019-07-11', '00:00:00', 1, 0, 7000, '2019-07-11 03:40:02', '2019-07-11 03:40:02'),
-(2, 0, 'URI9303', 'Suitable For you here.', 'Christian', 'christian@gmail.com', 1, '2019-07-03', '00:00:00', '2019-07-06', '00:00:00', 1, 0, 6000, '2019-07-03 11:05:51', '2019-07-03 11:05:51'),
-(5, NULL, 'HUYROWI', 'Gorgeous room here', 'godlove', 'godloveabilandou@gmail.com', 1, '2019-07-11', '06:05:00', '2019-07-05', '20:08:00', 1, 0, 764, '2019-07-11 04:00:16', '2019-07-11 04:00:16');
+INSERT INTO `reserve` (`id`, `room_id`, `customer_name`, `customer_email`, `check_in`, `from_time`, `check_out`, `to_time`, `number_of_days`, `adults`, `children`, `cost_per_day`, `amount_due`, `created_at`, `updated_at`) VALUES
+(19, 2, 'Godlove Abilandou', 'godloveabilandou@gmail.com', '2019-07-16', '09:09:00', '2019-07-18', '08:08:00', NULL, 1, 0, NULL, NULL, '2019-07-15 13:55:46', '2019-07-15 13:55:46'),
+(21, 9, 'Godlove Abilandou', 'godloveabilandou@gmail.com', '2019-07-10', '07:07:00', '2019-07-17', '04:05:00', NULL, 1, 0, NULL, NULL, '2019-07-15 15:29:37', '2019-07-15 15:29:37'),
+(22, 5, 'Peterson', 'peterson@gmail.com', '2019-07-18', '03:03:00', '2019-07-19', '13:03:00', NULL, 1, 0, NULL, NULL, '2019-07-18 04:33:42', '2019-07-18 04:33:42'),
+(23, 11, 'Godlove Abilandou', 'godloveabilandou@gmail.com', '2019-07-18', '01:44:00', '2019-07-14', '17:05:00', NULL, 1, 0, NULL, NULL, '2019-07-18 08:59:22', '2019-07-18 08:59:22'),
+(24, 13, 'Christian', 'godloveabilandou@gmail.com', '2019-07-18', '06:06:00', '2019-07-14', '04:04:00', NULL, 1, 0, NULL, NULL, '2019-07-18 09:05:34', '2019-07-18 09:05:34');
 
 -- --------------------------------------------------------
 
@@ -532,14 +560,6 @@ CREATE TABLE `rooms` (
   `time_free` time DEFAULT NULL,
   `image` longblob,
   `booked` int(11) DEFAULT '0',
-  `customer_name` varchar(100) DEFAULT NULL,
-  `customer_email` varchar(100) DEFAULT NULL,
-  `check_in` date DEFAULT NULL,
-  `check_out` date DEFAULT NULL,
-  `from_time` time DEFAULT NULL,
-  `to_time` time DEFAULT NULL,
-  `adults` varchar(11) DEFAULT NULL,
-  `children` varchar(11) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -548,14 +568,12 @@ CREATE TABLE `rooms` (
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `name`, `number`, `category`, `description`, `price`, `date_free`, `time_free`, `image`, `booked`, `customer_name`, `customer_email`, `check_in`, `check_out`, `from_time`, `to_time`, `adults`, `children`, `created_at`, `updated_at`) VALUES
-(2, 'Gorgeous room here', '011', 'Single Bed Room VIP', '                                                            This is  a golden opportunity for you to get this type of room. nice\r\n                            \r\n                            \r\n                            ', 879, '2019-07-05', '16:04:00', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-04 15:57:22', '2019-07-11 02:59:44'),
-(5, 'Home sweet home', '012', 'Double Bed Room', '                                                            Perfect Room we have here\r\n                            \r\n                            \r\n                            ', 450, '2019-07-20', '03:33:00', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-07 02:40:14', '2019-07-11 03:00:00'),
-(9, 'Best Ever', '013', 'Double Bed Room VIP', '                              This is a really interesting part of the rooms we gat here\r\n                            \r\n                            ', 3634, '2019-07-06', '03:03:00', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-07 03:15:38', '2019-07-11 03:00:21'),
-(10, 'Tight and all set up', '014', 'Double Bed Room VIP', '                                                            Very eloquent and free from stress\r\n                            \r\n                            \r\n                            ', 454, '2019-07-13', '05:05:00', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-06-07 03:22:20', '2019-07-11 03:00:40'),
-(11, 'Suitable For you here.', '021', 'Double Bed Room', '                                                                                          This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room.\r\n                            \r\n                            \r\n                            \r\n                            \r\n                            ', 500, '2019-07-11', '17:05:00', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-01 05:38:26', '2019-07-11 08:14:30'),
-(12, 'VIP Sui', '023', 'Single Bed Room VIP', 'Awesome bath tub and other facilitites', 40000, '2019-07-17', '12:23:00', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-11 09:16:24', '2019-07-11 08:16:24'),
-(13, 'Gorgeous room here', '023', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Christian', 'godloveabilandou@gmail.com', '2019-07-12', '2019-07-12', '07:07:00', '17:05:00', '1', '0', '2019-07-12 10:15:25', '2019-07-12 09:15:25');
+INSERT INTO `rooms` (`id`, `name`, `number`, `category`, `description`, `price`, `date_free`, `time_free`, `image`, `booked`, `created_at`, `updated_at`) VALUES
+(5, 'Home sweet home', '012', 'Double Bed Room', ' Perfect Room we have here.  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here.\r\n                            \r\n                            \r\n                            \r\n                            ', 450, '2019-07-20', '03:33:00', NULL, 0, '2019-06-07 02:40:14', '2019-07-18 09:00:10'),
+(9, 'Best Ever', '013', 'Double Bed Room VIP', '                              This is a really interesting part of the rooms we gat here\r\n                            \r\n                            ', 3634, '2019-07-06', '03:03:00', NULL, 0, '2019-06-07 03:15:38', '2019-07-18 09:00:15'),
+(10, 'Tight and all set up', '014', 'Double Bed Room VIP', '                                                            Very eloquent and free from stress\r\n                            \r\n                            \r\n                            ', 454, '2019-07-13', '05:05:00', NULL, 1, '2019-06-07 03:22:20', '2019-07-18 05:24:00'),
+(11, 'Suitable For you here.', '021', 'Double Bed Room', '                                                                                          This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room.\r\n                            \r\n                            \r\n                            \r\n                            \r\n                            ', 500, '2019-07-11', '17:05:00', NULL, 0, '2019-07-01 05:38:26', '2019-07-18 09:00:20'),
+(12, 'VIP Sui', '023', 'Single Bed Room VIP', 'Awesome bath tub and other facilitites', 40000, '2019-07-17', '12:23:00', NULL, 1, '2019-07-11 09:16:24', '2019-07-18 08:17:03');
 
 -- --------------------------------------------------------
 
@@ -623,6 +641,12 @@ ALTER TABLE `employees`
 -- Indexes for table `guest`
 --
 ALTER TABLE `guest`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `meals`
+--
+ALTER TABLE `meals`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -696,6 +720,12 @@ ALTER TABLE `guest`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `meals`
+--
+ALTER TABLE `meals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
@@ -705,7 +735,7 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT for table `reserve`
 --
 ALTER TABLE `reserve`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `rooms`
