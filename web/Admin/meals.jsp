@@ -84,21 +84,32 @@
                             <td><%=resultSet.getString("meals.total_amount")%></td>
                             <td>
                               <%
-                                if(Integer.parseInt(resultSet.getString("meals.received")) == 1){
+                                if((Integer.parseInt(resultSet.getString("customers.has_order")) == 1) && (Integer.parseInt(resultSet.getString("customers.seen")) == 0) ){
                                     %>
-                                    <p class="green-text"><b>Received</b></p>
+                                    <p class="blue-text" title="Guest just made an order waiting approval" ><b>Pending..</b></p>
                                     <%
-                                }else{
+                                }else if(Integer.parseInt(resultSet.getString("customers.has_order")) == 2) {
                                   %>
-                                  <p class="blue-text"><b>Pending...</b></p>
+                                  <p class="blue-text" title="Guest order for meal accepted by admin"><b>Accepted</b></p>
                                   <%
-                                }
+                                }else if(Integer.parseInt(resultSet.getString("customers.seen")) == 1){
+                                     %>
+                                  <p class="blue-text" title="This guest has received the meal he/she ordered"><b>Seen</b></p>
+                                  <%
+                                 }
                               %>
                               </td>
                             <td><%=resultSet.getString("meals.created_at")%></td>
                             <td>
-                                <a  href="./edit_category.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-success btn-sm" title="Edit room"><i class="fa fa-edit fa-lg">edit</i></a>
-                                <a href="./meals/delete_meal.jsp?uid=<%=resultSet.getString("id")%>" title="delete This meal order" id="delcat" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash fa-lg"></i></a>
+                                <%
+                                if((Integer.parseInt(resultSet.getString("customers.has_order")) == 1) && (Integer.parseInt(resultSet.getString("customers.seen")) == 0)){
+                                    %>
+                                   <a  href="./meals/accept_meal.jsp?uid=<%=resultSet.getString("customers.id")%>" id="acceptmeal"  class="btn btn-success btn-sm" title="Accept Meal Order"><i class="fa fa-edit fa-lg">Accept</i></a>
+                                    <%
+                                }
+                                %>
+                                
+                                <a href="./meals/delete_meal.jsp?uid=<%=resultSet.getString("id")%>" title="delete This meal order" id="delmeal" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash fa-lg"></i></a>
                             </td>
                         </tr> 
                         <%
@@ -120,9 +131,16 @@
   <%@include file="./includes/admin_footer.jsp" %>
 </div>
     <script>
-        $("a#delcat").click(function() {
+        $("a#delmeal").click(function() {
         // alert('something');
-            if (confirm("Are You Sure To delete this category? You will never recover it again")) {
+            if (confirm("Are You Sure To delete this order? You will never recover it again")) {
+                return true;
+            }
+            return false;
+        });
+        $("a#acceptmeal").click(function() {
+        // alert('something');
+            if (confirm("Are You Sure To Accept Guest order?")) {
                 return true;
             }
             return false;

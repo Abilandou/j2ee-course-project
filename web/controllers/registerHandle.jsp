@@ -7,19 +7,7 @@
 <%@page import="java.sql.*" %>
 <%@page import="java.util.Random" %>
 
-        <% 
-//            if(session.getAttribute("login")!=null){
-//                response.sendRedirect("index.jsp");
-//            }
-            Random random = new Random();
-            char c = (char) (random.nextInt(26) + 'a');
-//            String theChar = Character.toString(c); 
-            String theChar = "ruryehdwtwWRWASDHDHSsdherhehdf"; 
-            session.setAttribute("custsession", theChar);
-            String custsession = (String)session.getAttribute("custsession");//Retrieve value of session and getAttribute return session objecso we need to convert it to string
-//            String custsession = theChar;
 
-        %>
         <%
             try{
 
@@ -36,7 +24,6 @@
                 state=request.getParameter("state");
                 address=request.getParameter("address");
                 country=request.getParameter("country");
-                custsession=request.getParameter("custsession");
                 city=request.getParameter("city");
                 phone=request.getParameter("phone");
                 password=request.getParameter("password");
@@ -45,7 +32,7 @@
                 
                 preparestmnt = con.prepareStatement("insert into customers("
                         + "first_name, last_name, email, state, address,"
-                        + "country, city, phone, password,custsession) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                        + "country, city, phone, password) values(?, ?, ?, ?, ?, ?, ?, ?, ?);");
                 
                 preparestmnt.setString(1, first_name);
                 preparestmnt.setString(2, last_name);
@@ -56,7 +43,6 @@
                 preparestmnt.setString(7, city);
                 preparestmnt.setString(8, phone);
                 preparestmnt.setString(9, password);
-                preparestmnt.setString(10, custsession);
                 
                 preparestmnt.executeUpdate(); //execute query
                 

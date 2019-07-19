@@ -18,50 +18,6 @@
         <div class="container-fluid">
             <div class="row jumbotron " style="margin-top: 20px;">
                 <div class="col-12 ">
-                    <%
-                 
-                    try{
-
-                     Class.forName("com.mysql.jdbc.Driver");
-
-                     Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
-
-                    if(request.getParameter("mealOrderBut") != null){
-                        String room_id, guest_id, meal_type;
-                        String number_of_plates, amount_per_plate;
-                        int total_amount;
-                        room_id=request.getParameter("room_id");
-                        guest_id=request.getParameter("guest_id");
-                        meal_type=request.getParameter("meal_type");
-                        number_of_plates =request.getParameter("number_of_plates");
-                        amount_per_plate =request.getParameter("amount_per_plate");
-                        total_amount = Integer.parseInt(number_of_plates) * Integer.parseInt(amount_per_plate);
-
-
-                        PreparedStatement preparestmnt = null; //Create statement
-
-                        preparestmnt = con.prepareStatement("insert into meals( room_id, guest_id,meal_type, number_of_plates, amount_per_plate, total_amount) values(?, ?, ?, ?, ?, ?);");
-
-                        preparestmnt.setString(1, room_id);
-                        preparestmnt.setString(2, guest_id);
-                        preparestmnt.setString(3, meal_type);
-                        preparestmnt.setString(4, number_of_plates);
-                        preparestmnt.setString(5, amount_per_plate);
-                        preparestmnt.setInt(6, total_amount);
-                        preparestmnt.executeUpdate(); //execute query
-
-                        String message = "Success In Meal Odering.";
-                        request.setAttribute("msg", message);
-                        response.sendRedirect("./account.jsp");
-
-                        con.close();
-                    }
-                    }catch(Exception e){
-                        out.println(e);
-                    }
-
-                   %> 
-
                     <% 
                     try{
 
@@ -95,7 +51,8 @@
                                     if(Integer.parseInt(rst.getString("has_room")) == 1){
                                        %>
                                        <div class="card">
-                                           <form action="./account.jsp" method="post"  id="addRoom2_form">
+                                           <div class="container-fluid">
+                                           <form action="./meals/HandleGuestOrder.jsp" method="post"  id="addRoom2_form">
                                                <div class="form-group">
                                                       <% 
                                                          try{
@@ -148,7 +105,42 @@
                                               </div>
                                               <h5 class="orange-text text-darken-4 text-center card z-depth-3">Meal Order</h5>
                                               
-                                              <p class="green-text text-darken-4"><%=session.getAttribute("msg")%></p>
+                                              <!--Updating has_order to 1 in customers table after customer makes meal order-->
+                                                 <%   
+                                                    int customer_id = Integer.parseInt(rst.getString("id"));
+
+                                                     try{
+//                                                         Class.forName("com.mysql.jdbc.Driver");
+//                                                         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+                                                     Statement statement = conn.createStatement();
+                                                     String query = "UPDATE customers SET has_order='"+1+"' WHERE id='"+customer_id+"'";
+                                                     int i = statement.executeUpdate(query);
+
+                                                     if(i == 1){
+                                                       
+                                                     }
+                                                     }catch (Exception e){
+                                                         e.printStackTrace();
+                                                     }
+                                                 %>
+
+                                              <%
+                                                  int has_order =Integer.parseInt(rst.getString("has_order"));
+                                                  int seen =Integer.parseInt(rst.getString("seen"));
+                                              if((seen == 0) && (has_order == 1) ){
+                                                  %>
+                                                  <p class="green-text text-darken-4">Success Your Order has been received</p>
+                                                  <%
+                                              }else if(has_order == 2){
+                                                %>
+                                                <p class="green-text text-darken-4">Order Has Been Accepted And it is in Process, Please Be Patient</p>
+                                                <%
+                                                }else if (seen == 1){
+                                                    %>
+                                                    <p class="green-text text-darken-4">You just confirmed That you received your meal, enjoy your meal.</p>
+                                                    <%
+                                                }
+                                                  %>
                                               <div class="form-group">
                                                   <label class="text-dark">Meal Type<span class="text-danger">*</span></label>
                                                   <select name="meal_type" required="" class="form-control">
@@ -160,7 +152,7 @@
                                               </div>
                                               <div class="form-group">
                                                   <label class="text-dark">Number Of Plates<span class="text-danger">*</span></label>
-                                                  <input required 
+                                                  <input 
                                                       class="form-control" 
                                                       type="number" name="number_of_plates" 
                                                       id="num_plates" 
@@ -169,7 +161,7 @@
                                                   >
                                               </div> 
                                               <div class="form-group">
-                                                  <input required 
+                                                  <input
                                                       class="form-control" 
                                                       type="hidden" name="amount_per_plate" 
                                                       id="amount_plates" 
@@ -183,6 +175,12 @@
                                              </div>
                                               <br/>
                                            </form>
+                                       </div>
+                                        <div class="container-fluid">
+                                            <h5 class="orange-text text-darken-4 text-center card z-depth-3">Confirmation</h5>
+                                            <p>Please Click The Button below to confirm that the meal you requested has been delivered.</p>
+                                            <a href="./meals/meal_confirm.jsp?uid=<%=rst.getString("id")%>" class="btn right">Confirm</a>
+                                        </div>
                                        </div>
                                        <%
                                    }else{

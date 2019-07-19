@@ -138,7 +138,7 @@
                                 </div>
                                  <div class="form-group">
                                     <label>Country</label>
-                                    <select name="name" class="browser-default">
+                                    <select name="country" class="browser-default">
                                         <option value="">Select country</option>
                                         <% 
                                             try{
@@ -167,10 +167,6 @@
                                     <label>PassWord</label>
                                     <input type="password" class="form-control password" name="password" required id="password"  />
                                 </div>
-<!--                                 <div class="form-group">
-                                   
-                                     <input type="hidden" value="" name="custsession"   />
-                                </div>-->
                                 <div class="form-group">
                                     <input type="submit" name="registerBut" class="btn btn-success btn-lg" value="Register" />
                                 </div>
