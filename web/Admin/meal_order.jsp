@@ -39,7 +39,7 @@
 
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
             
-            if(request.getParameter("addRoomButd") != null){
+            if(request.getParameter("mealOrderBut") != null){
                 String room_id, guest_id, meal_type;
                 String number_of_plates, amount_per_plate;
                 int total_amount;
@@ -112,13 +112,13 @@
                                     Class.forName("com.mysql.jdbc.Driver");
                                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
                                     Statement stm = conn.createStatement();
-                                    String sql = "SELECT * FROM reserve";
+                                    String sql = "SELECT * FROM customers where has_room='"+1+"'";
 
                                     ResultSet rs = stm.executeQuery(sql);
 
                                     while(rs.next()){
                                         %>
-                                        <option value="<%=rs.getString("id")%>"><%=rs.getString("customer_name")  %></option>
+                                        <option value="<%=rs.getString("id")%>"><%=rs.getString("first_name")  %> <%=rs.getString("last_name")  %></option>
                                         <%
                                     }
                                     }catch(Exception e){
@@ -159,7 +159,7 @@
                     </div>
                      <input type="hidden" name="total_amount" value="total_amount">
                     <div class="form-group">
-                        <input type="submit" name="addRoomButd" value="Confirm" class="btn pull-right">
+                        <input type="submit" name="mealOrderBut" value="Confirm" class="btn pull-right">
                     </div>
                      <br/>
                 </form>

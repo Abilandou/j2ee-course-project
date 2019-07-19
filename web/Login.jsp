@@ -12,6 +12,7 @@
         <%@include file="AllIncludes.jsp" %>
         <%@include file="includes/header.jsp" %>
         <%@page import="java.util.Random" %>
+        <%@page import="java.sql.*"%>
         <title>User Login</title>
     </head>
     <body>
@@ -38,9 +39,7 @@
                     out.println("Invalid password <a href='index.jsp'>try again</a>");
                 }
             }
-            
-            
-            
+ 
 //        Random random = new Random();
 //            char c = (char) (random.nextInt(26) + 'a');
 ////            String theChar = Character.toString(c); 
@@ -62,11 +61,11 @@
                             <form class="UserLoginForm" name="loginForm" action="./controllers/loginHandle.jsp" method="post">
                                 <div class="form-group mb-3">
                                     <label class="text-dark">Email</label>
-                                    <input type="text" 
+                                    <input type="email" 
                                         name="email" 
                                         id="user_email" 
                                         class="form-control"
-                                        placeholder="name"
+                                        placeholder="email"
                                         required
                                     >
                                 </div>
@@ -139,7 +138,30 @@
                                 </div>
                                  <div class="form-group">
                                     <label>Country</label>
-                                    <input type="text" class="form-control country" name="country" required id="country" />
+                                    <select name="name" class="browser-default">
+                                        <option value="">Select country</option>
+                                        <% 
+                                            try{
+
+                                               Class.forName("com.mysql.jdbc.Driver");
+                                               Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+                                               Statement stm = conn.createStatement();
+                                               String sql = "SELECT * FROM countries";
+
+                                               ResultSet rst = stm.executeQuery(sql);
+
+                                               while(rst.next()){
+                                                   %>
+                                                   <option value="<%=rst.getString("country_name")  %>"><%=rst.getString("country_name")  %></option>
+                                                   <%
+                                               }
+
+                                               }catch(Exception e){
+                                                   out.println(e);
+                                               }
+                                         %>
+                                    </select>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label>PassWord</label>

@@ -77,7 +77,7 @@
             %>
             <%} else {
             %>
-                <i class="fa fa-user"></i><b class="red-text text-capitalize"><%=session.getAttribute("email")%></b> 
+                <i class="fa fa-user"></i><b class="orange-text text-darken-4"><%=session.getAttribute("email")%></b> 
             <%
                 }
             %>
@@ -93,3 +93,4 @@
     </div>
   </nav>
 </div>
+  

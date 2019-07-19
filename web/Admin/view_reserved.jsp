@@ -65,19 +65,20 @@
                                      Class.forName("com.mysql.jdbc.Driver").newInstance();
 
                                      connection = DriverManager.getConnection(connectionURL, "godlove", "godlove");
-
+                                     
+//                                     String firstquerry = "SELECT * from rooms, reserve WHERE rooms.id=reserve.room_id";
+                                     
                                      statement = connection.createStatement();
-
-                                     rs = statement.executeQuery("SELECT * from rooms, reserve WHERE "+
-                                                    "rooms.id=reserve.room_id");
+                                     String querry = "SELECT * FROM reserve INNER JOIN rooms ON reserve.room_id = rooms.id INNER JOIN customers ON reserve.customer_id = customers.id ";
+                                     rs = statement.executeQuery(querry);
                                 while(rs.next()){
                                %>
                                 <tr>
                                     <td><%= rs.getInt(1)%></td>
-                                    <td><%= rs.getString("name")%></td>
-                                    <td><%= rs.getString("number")%></td>
-                                    <td><%= rs.getString("customer_name")%></td>
-                                    <td><%= rs.getString("customer_email")%></td>
+                                    <td><%= rs.getString("rooms.name")%></td>
+                                    <td><%= rs.getString("rooms.number")%></td>
+                                    <td><%= rs.getString("customers.first_name")%> <%= rs.getString("customers.last_name")%></td>
+                                    <td><%= rs.getString("customers.email")%></td>
                                     <td>
                                          <%
                                             if(Integer.parseInt(rs.getString("booked")) == 1){
@@ -99,7 +100,7 @@
                                     <td>
                                         <a  href="./edit_reserve.jsp?uid=<%=rs.getString("id")%>" class="btn btn-primary btn-xs" title="Edit Reservation">Edit<i class="fa fa-edit fa-lg"></i></a>
                                         <a href="./Reservation/cancel_reserve.jsp?uid=<%=rs.getString("id")%>" title="Cancel Reservation" id="cancelreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Cancel</a>
-                                        <a href="./Reservation/del_reserve.jsp?uid=<%=rs.getString("id")%>" title="Cancel Reservation" id="delreserve" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-lg"></i>Delete</a>
+                                        <a href="./Reservation/del_reserve.jsp?uid=<%=rs.getString("id")%>" title="Delete Reservation" id="delreserve" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-lg"></i>Delete</a>
                                     </td>
                                 </tr>
                                 <%

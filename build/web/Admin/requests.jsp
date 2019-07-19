@@ -106,9 +106,9 @@
                               </td>
                               <td><%=resultSet.getString("determinant")  %></td>
                               <td>
-                                  <a  href="./Reservation/accept_request.jsp?uid=<%=resultSet.getString("id")%>" onclick="acceptRequest();" class="btn btn-primary btn-xs" title="Accept Request">Accept<i class="fa fa-edit fa-lg"></i></a>
-                                  <a href="./Reservation/cancel_request.jsp?uid=<%=resultSet.getString("id")%>" onclick="cancelRequest();" title="Cancel Request" id="delreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Cancel</a>
-                                  <a href="./Reservation/del_request.jsp?uid=<%=resultSet.getString("id")%>" onclick="deleteRequest();" title="Delete Request" id="delreserve" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-lg"></i>Delete</a>
+                                  <a  href="./Reservation/accept_request.jsp?uid=<%=resultSet.getString("id")%>"  class="btn btn-primary btn-xs" id="acceptrequest" title="Accept Request">Accept<i class="fa fa-edit fa-lg"></i></a>
+                                  <a href="./Reservation/cancel_request.jsp?uid=<%=resultSet.getString("id")%>"  title="Cancel Request" id="cancelrequest" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Cancel</a>
+                                  <a href="./Reservation/del_request.jsp?uid=<%=resultSet.getString("id")%>"  title="Delete Request" id="deleterequest" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-lg"></i>Delete</a>
                               </td>
                             </tr>
             
@@ -128,15 +128,27 @@
     </div>
 </div>
     <script>
-        function acceptRequest(){
-            alert("Sure to accept this Request?");
-        }
-        function cancelRequest(){
-            alert("Sure to cancel this Request?");
-        }
-        function deleteRequest(){
-            alert("Sure to delete this Request? You will not be able to recover this request again");
-        }
+        $(document).ready(function(){
+            $("a#acceptrequest").click(function(){
+                if(confirm("Sure To accept this request?")){
+                    return true;
+                }
+                return false;
+            });
+            $("a#cancelrequest").click(function(){
+                if(confirm("Sure To Cancel this request?")){
+                    return true;
+                }
+                return false;
+            });
+            $("a#deleterequest").click(function(){
+                if(confirm("Sure To Delete this request?")){
+                    return true;
+                }
+                return false;
+            });
+        });
+        
     </script>
  <div>
   <%@include file="./includes/admin_footer.jsp" %>

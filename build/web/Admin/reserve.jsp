@@ -32,7 +32,7 @@
                 
                 <h6>Required Fields are marked(<b class="text-danger">*</b>)</h6>  
                 
-                
+                <!--Updating booked field under rooms table-->
                 <%
                     try{
                     Class.forName("com.mysql.jdbc.Driver");
@@ -40,9 +40,39 @@
                     Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");         
                     if(request.getParameter("reserveBut") != null){
                         
-                        String theid;
-                        theid=request.getParameter("room_id");
-                         String query = "UPDATE rooms SET booked='"+1+"' WHERE id='"+theid+"'";
+                        String rumid;
+                        rumid=request.getParameter("room_id");
+                         String query = "UPDATE rooms SET booked='"+1+"' WHERE id='"+rumid+"'";
+                        Statement stat = con.createStatement();
+//                        ResultSet rs = stat.executeQuery(query);
+                            int i = stat.executeUpdate(query);
+                            if(i == 1){
+//                                response.sendRedirect("./view_reserved.jsp");
+//                                out.println("<h4 class='text-danger'>Sorry, Update not successfull</h4>");
+                            }
+                            else{
+                 //              out.println("<h4 class='text-danger'>Sorry, Update not successfull</h4>");
+                            }
+                      
+
+                       
+                    }
+                    }catch(Exception e){
+                        out.println(e);
+                    }
+               
+                %>
+                <!--Updating has_room field under customers table-->
+                 <%
+                    try{
+                    Class.forName("com.mysql.jdbc.Driver");
+
+                    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");         
+                    if(request.getParameter("reserveBut") != null){
+                        
+                        String custid;
+                        custid=request.getParameter("customer_id");
+                         String query = "UPDATE customers SET has_room='"+1+"' WHERE id='"+custid+"'";
                         Statement stat = con.createStatement();
 //                        ResultSet rs = stat.executeQuery(query);
                             int i = stat.executeUpdate(query);
@@ -71,7 +101,7 @@
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
             
             if(request.getParameter("reserveBut") != null){
-                String  room_id,  customer_name, customer_email, cost_per_day;
+                String  room_id,  customer_id;
                 String check_in, check_out, from_time, to_time, adults, children;
                 int number_of_days, amount_due, one_day_cost;
                 
@@ -79,8 +109,7 @@
                 //Calculatin the amount due to insert in the database.
 
                 room_id=request.getParameter("room_id");
-                customer_name=request.getParameter("customer_name");
-                customer_email =request.getParameter("customer_email");
+                customer_id=request.getParameter("customer_id");
                 check_in =request.getParameter("check_in");
                 from_time =request.getParameter("from_time");
                 check_out=request.getParameter("check_out");
@@ -96,18 +125,17 @@
                 
                 PreparedStatement preparestmnt = null; //Create statement
                 String querry1 = "insert into reserve(room_id,"+
-                        "customer_name, customer_email, check_in, from_time, check_out, to_time, adults, children) values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                        "customer_id, check_in, from_time, check_out, to_time, adults, children) values(?, ?, ?, ?, ?, ?, ?, ?);";
                 preparestmnt = con.prepareStatement(querry1);
                 
                 preparestmnt.setString(1, room_id);
-                preparestmnt.setString(2, customer_name);
-                preparestmnt.setString(3, customer_email);
-                preparestmnt.setString(4, check_in);
-                preparestmnt.setString(5, from_time);
-                preparestmnt.setString(6, check_out);
-                preparestmnt.setString(7, to_time);
-                preparestmnt.setString(8, adults);
-                preparestmnt.setString(9, children);
+                preparestmnt.setString(2, customer_id);
+                preparestmnt.setString(3, check_in);
+                preparestmnt.setString(4, from_time);
+                preparestmnt.setString(5, check_out);
+                preparestmnt.setString(6, to_time);
+                preparestmnt.setString(7, adults);
+                preparestmnt.setString(8, children);
 
                 preparestmnt.executeUpdate(); //execute query
                 
@@ -151,22 +179,55 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="text-dark lead">Guest Name<span class="text-danger">*</span></label>
-                        <input
-                            class="form-control" 
-                            type="text" name="customer_name" 
-                            id="customer_name" 
-                            required
-                        >
-                    </div> 
-                    <div class="form-group">
-                        <label class="text-dark lead">Guest Email<span class="text-danger">*</span></label>
-                        <input
-                            class="form-control" 
-                            type="email" name="customer_email" 
-                            id="customer_email" 
-                            required
-                        >
+                        <label class="text-dark lead">Guest Full Name<span class="text-danger">*</span></label>
+                        <select name="customer_id" required="" class="form-control">
+                             <% 
+                                 try{
+                                    
+                                    String strl = request.getParameter("uid");
+                                     
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+                                    Statement stm = conn.createStatement();
+                                    String sql = "SELECT * FROM customers WHERE id='"+strl+"'";
+
+                                    ResultSet rs = stm.executeQuery(sql);
+
+                                    if(rs.next()){
+                                        %>
+                                        <option value="<%=rs.getString("id")%>"><%=rs.getString("first_name")  %> <%=rs.getString("last_name")  %></option>
+                                        <%
+                                    }else{
+                                        %>
+                                        <option value="">Select Guest</option>
+                                        <%
+                                    }
+                                    }catch(Exception e){
+                                        out.println(e);
+                                    }
+                              %>
+                             
+                             <% 
+                                 try{
+                                     
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+                                    Statement stm = conn.createStatement();
+                                    String sql = "SELECT * FROM customers";
+
+                                    ResultSet rs = stm.executeQuery(sql);
+
+                                    while(rs.next()){
+                                        %>
+                                        <option value="<%=rs.getString("id")%>"><%=rs.getString("first_name")  %> <%=rs.getString("last_name")  %></option>
+                                        <%
+                                    }
+                                    }catch(Exception e){
+                                        out.println(e);
+                                    }
+                              %>
+
+                        </select>
                     </div>
                     <div class="col-sm-12">
                         <div class="col-sm-6">
@@ -206,15 +267,6 @@
                         value="number_of_days"
                         id="numdays"
                     >
-                    <div class="form-group">
-                        <label class="text-dark lead">One Day Cost<span class="text-danger">*</span></label>
-                        <input required 
-                            class="form-control" 
-                            type="number" name="cost_per_day" 
-                            id="costaday" 
-                            min="1"
-                        >
-                    </div>
                     <div class="form-group">
                         <label class="text-dark lead">Adults<span class="text-danger">*</span></label>
                         <input required 

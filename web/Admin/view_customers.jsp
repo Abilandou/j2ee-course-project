@@ -32,8 +32,11 @@
         <div class="col-md-12">
             <div class="col-md-1"><%@include file="./includes/admin_sidebar.jsp" %></div>
             <div class="col-md-11">
-                <h3 class="flow-text"><i class="material-icons"></i> Customers</h3>
+                 <h3 class="flow-text"><i class="material-icons"></i> Guests
+                    <a class="grey-text text-lighten-4 right" href="add_guest.jsp"><button  class="btn"><i class="material-icons prefix">add</i>Add Guest</button></a>
+                 </h3>
                 <div class="divider"></div><br/>
+
 
                 <div class="card z-depth-2">
                     <%   
@@ -53,17 +56,17 @@
                     <div class="card-content">
                         <table class="table-bordered  table-responsive table-hover">
                             <tr>
-                                <th width="2%" class=" text-center">id</th>
-                                <th width="10%" class=" text-center">First Name</th>
+                                <th width="1%" class=" text-center">id</th>
+                                <th width="8%" class=" text-center">First Name</th>
                                 <th width="15%" class=" text-center">Email</th>
-                                <th width="10%" class=" text-center">Phone</th>
-                                <th width="10%" class=" text-center">City</th>
-                                <th width="15%" class=" text-center">Country</th>
-                                <th width="10%" class=" text-center">Action</th>
+                                <th width="8%" class=" text-center">Phone</th>
+                                <th width="8%" class=" text-center">City</th>
+                                <th width="10%" class=" text-center">Country</th>
+                                <th width="8%" class=" text-center">Has Room</th>
+                                <th width="18%" class=" text-center">Action</th>
                             </tr>
             
                             <%
-
                                 try{
                                     conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
                                     statement = conn.createStatement();
@@ -72,9 +75,6 @@
                                     resultSet = statement.executeQuery(sql);
 
                                     while(resultSet.next()){
-
-
-
                             %>
                             <tr>
                               <td><%=resultSet.getString("id")  %></td>
@@ -84,8 +84,22 @@
                               <td><%=resultSet.getString("city")  %></td>
                               <td><%=resultSet.getString("country")  %></td>
                               <td>
-                                  <p class="btn btn-primary btn-xs" title="view customer's details"><i class="fa fa-eye fa-lg"></i>view</p>
-                                <p class="btn btn-danger btn-xs" title="delete this customer"><i class="fa fa-trash"></i>delete</p>
+                              <%
+                                  if(Integer.parseInt(resultSet.getString("has_room")) == 1){
+                                      %>
+                                      <p class="green-text"><b>YES</b></p>
+                                      <%
+                                  }else{
+                                    %>
+                                    <p class="red-text"><b>NO</b></p>
+                                    <%
+                                  }
+                              %>
+                              </td>
+                              <td>
+                                <a href="guest_det.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-primary btn-xs" title="view Guest's details"><i class="fa fa-eye fa-lg"></i>view</a>
+                                <a href="reserve.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-info btn-xs" title="Make Reservation"><i class="material-icons">event_available</i>Reserve</a>
+                                <a href="#" class="btn btn-danger btn-xs" title="delete this Guest"><i class="fa fa-trash"></i>delete</a>
                               </td>
                             </tr>
             

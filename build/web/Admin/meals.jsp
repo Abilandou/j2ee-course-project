@@ -67,7 +67,7 @@
                             try{
                                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
                                 statement = conn.createStatement();
-                                 String querry = " SELECT * FROM meals INNER JOIN rooms ON meals.room_id = rooms.id INNER JOIN reserve ON meals.guest_id = reserve.id ";
+                                 String querry = " SELECT * FROM meals INNER JOIN rooms ON meals.room_id = rooms.id INNER JOIN customers ON meals.guest_id = customers.id ";
                                 resultSet = statement.executeQuery(querry);
 
                                 while(resultSet.next()){
@@ -76,7 +76,7 @@
                             <td><%=resultSet.getString("id")  %></td>
                             <td><%=resultSet.getString("rooms.name")  %></td>
                             <td><%=resultSet.getString("rooms.number")  %></td>
-                            <td><%=resultSet.getString("reserve.customer_name")  %></td>
+                            <td><%=resultSet.getString("customers.first_name")  %> <%=resultSet.getString("customers.last_name")  %></td> 
                             <td><%=resultSet.getString("meals.meal_type")  %></td>
                             <td><%=resultSet.getString("meals.number_of_plates")  %></td>
                             <td><%=resultSet.getString("meals.amount_per_plate")%></td>
