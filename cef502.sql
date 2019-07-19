@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 18, 2019 at 11:35 AM
+-- Generation Time: Jul 19, 2019 at 09:38 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -377,7 +377,7 @@ CREATE TABLE `customers` (
   `address` varchar(255) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `custsession` varchar(255) DEFAULT NULL,
+  `has_room` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -386,14 +386,15 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `city`, `state`, `country`, `address`, `phone`, `password`, `custsession`, `created_at`, `updated_at`) VALUES
-(1, 'Godlove', 'Abilandou', 'godloveabilandou@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672722945', 'godlove', NULL, '2019-05-02 16:39:09', '2019-05-02 15:39:09'),
-(2, 'Glenn', 'Fritz', 'gnhsglenn@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672725433', 'godlove', NULL, '2019-05-02 16:50:30', '2019-05-02 15:50:30'),
-(3, 'Christian', 'Esendege', 'christ@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '6727234342', 'godlove', NULL, '2019-05-02 16:59:21', '2019-05-02 15:59:21'),
-(4, 'Jadon', 'Jadon Emeh', 'jardon@gmail.com', 'Tala', 'Talam', 'United States Of America', 'Tala Street', '5639485848', 'godlove', NULL, '2019-05-01 18:09:09', '2019-05-01 17:09:09'),
-(5, 'Christian', 'talam', 'zakam@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '78565644', 'godlove', NULL, '2019-05-17 06:59:07', '2019-05-17 05:59:07'),
-(6, 'Dilon', 'Jaba', 'adulf@gmail.com', 'Buea', 'South-Westes', 'Cameroon', 'Malingo', '67849848', 'godlove', NULL, '2019-05-17 07:00:30', '2019-05-17 06:00:30'),
-(7, 'sgsgsg', 'Abilandou', 'godloveabilandou@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo street', '+237672722945', 'godlove', NULL, '2019-07-11 05:06:19', '2019-07-11 04:06:19');
+INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `city`, `state`, `country`, `address`, `phone`, `password`, `has_room`, `created_at`, `updated_at`) VALUES
+(1, 'Godlove', 'Abilandou', 'godloveabilandou@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672722945', 'godlove', 1, '2019-05-02 16:39:09', '2019-07-18 20:55:50'),
+(2, 'Glenn', 'Fritz', 'gnhsglenn@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672725433', 'godlove', 0, '2019-05-02 16:50:30', '2019-05-02 15:50:30'),
+(3, 'Christian', 'Esendege', 'christ@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '6727234342', 'godlove', 0, '2019-05-02 16:59:21', '2019-05-02 15:59:21'),
+(4, 'Engineer', 'Abilandou', 'abilandougodlove@gmail.com', 'Tala', 'Talam', 'United States Of America', 'Tala Street', '5639485848', 'godlove', 0, '2019-05-01 18:09:09', '2019-07-18 21:13:19'),
+(5, 'Christian', 'talam', 'zakam@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '78565644', 'godlove', 0, '2019-05-17 06:59:07', '2019-05-17 05:59:07'),
+(6, 'Dilon', 'Jaba', 'adulf@gmail.com', 'Buea', 'South-Westes', 'Cameroon', 'Malingo', '67849848', 'godlove', 0, '2019-05-17 07:00:30', '2019-05-17 06:00:30'),
+(8, 'Perete', 'Pereta', 'peretata@gmail.com', 'Yaounde', 'Central', 'Cameroon', 'Tombel Street', '+237672722945', NULL, 0, '2019-07-18 18:14:48', '2019-07-18 17:14:48'),
+(9, 'Bilares', 'Bilong', 'bilong@gmail.com', 'Yaounde', 'Central', 'Cameroon', 'Tombel Street', '+237672722945', NULL, 0, '2019-07-18 21:23:55', '2019-07-18 20:23:55');
 
 -- --------------------------------------------------------
 
@@ -433,8 +434,8 @@ CREATE TABLE `guest` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `country` varchar(255) NOT NULL,
-  `adults` int(11) DEFAULT NULL,
-  `children` int(11) DEFAULT NULL,
+  `adults` int(11) DEFAULT '1',
+  `children` int(11) DEFAULT '0',
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
   `determinant` varchar(11) DEFAULT NULL,
@@ -449,11 +450,11 @@ CREATE TABLE `guest` (
 
 INSERT INTO `guest` (`id`, `name`, `email`, `phone`, `country`, `adults`, `children`, `check_in`, `check_out`, `determinant`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Abilandou', 'abilandougodlove@gmail.com', '+237672722945', 'Cameroon', NULL, NULL, '2019-07-05', '2019-07-08', 'Friend', 0, '2019-07-07 18:26:36', '0000-00-00 00:00:00'),
-(2, 'palens', 'godloveabilandou@gmail.com', '+237672722945', 'Cameroon', 3, 2, '2019-07-06', '2019-07-12', 'Family', 0, '2019-07-07 18:27:11', '0000-00-00 00:00:00'),
+(2, 'palens', 'godloveabilaniuydou@gmail.com', '+237672722945', 'Cameroon', 3, 2, '2019-07-06', '2019-07-12', 'Family', 0, '2019-07-18 11:16:47', '0000-00-00 00:00:00'),
 (3, 'Abilandou', 'abilandougodlove@gmail.com', '+237672722945', 'Cameroon', 1, 2, '2019-07-05', '2019-07-09', 'Family', 0, '2019-07-05 10:29:16', '0000-00-00 00:00:00'),
 (4, 'Abilandou', 'abilandougodlove@gmail.com', '+237672722945', 'Cameroon', NULL, NULL, '2019-07-06', '2019-07-04', 'Friend', 0, '2019-07-05 10:34:39', '0000-00-00 00:00:00'),
 (5, 'Abilandou', 'godloveabilandou@gmail.com', '+237672722945', 'Cameroon', NULL, NULL, '2019-07-05', '2019-07-06', 'Friend', 0, '2019-07-07 18:27:16', '0000-00-00 00:00:00'),
-(6, 'Abilandou', 'abilandougodlove@gmail.com', '+237672722945', 'Cameroon', NULL, NULL, '2019-07-05', '2019-07-06', 'Friend', 0, '2019-07-05 10:44:06', '0000-00-00 00:00:00'),
+(6, 'Abilandou', 'abilandougodlove@gmail.com', '+237672722945', 'Cameroon', NULL, NULL, '2019-07-05', '2019-07-06', 'Friend', 0, '2019-07-18 16:16:33', '0000-00-00 00:00:00'),
 (7, 'Abilandou', 'abilandougodlove@gmail.com', '+237672722945', 'Cameroon', NULL, NULL, '2019-07-05', '2019-07-05', 'Friend', 0, '2019-07-05 10:45:08', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -481,7 +482,8 @@ CREATE TABLE `meals` (
 INSERT INTO `meals` (`id`, `room_id`, `guest_id`, `meal_type`, `number_of_plates`, `amount_per_plate`, `total_amount`, `created_at`, `updated_at`) VALUES
 (1, 9, 1, 'Break Fast', 3, 1000, 3000, '2019-07-18 03:46:10', '0000-00-00 00:00:00'),
 (2, 9, 21, 'Launch', 2, 1500, 3000, '2019-07-18 04:03:40', '0000-00-00 00:00:00'),
-(3, 5, 22, 'Supper', 2, 3000, 6000, '2019-07-18 04:35:03', '0000-00-00 00:00:00');
+(3, 5, 22, 'Supper', 2, 3000, 6000, '2019-07-18 04:35:03', '0000-00-00 00:00:00'),
+(4, 5, 1, 'Break Fast', 2, 3000, 6000, '2019-07-19 05:20:10', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -517,17 +519,13 @@ INSERT INTO `positions` (`id`, `name`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `reserve` (
   `id` int(11) NOT NULL,
   `room_id` int(11) DEFAULT NULL,
-  `customer_name` varchar(255) DEFAULT NULL,
-  `customer_email` varchar(255) DEFAULT NULL,
+  `customer_id` int(11) NOT NULL,
   `check_in` date DEFAULT NULL,
   `from_time` time DEFAULT NULL,
   `check_out` date DEFAULT NULL,
   `to_time` time DEFAULT NULL,
-  `number_of_days` int(11) DEFAULT NULL,
   `adults` int(11) DEFAULT NULL,
   `children` int(11) DEFAULT NULL,
-  `cost_per_day` varchar(11) DEFAULT NULL,
-  `amount_due` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -536,12 +534,9 @@ CREATE TABLE `reserve` (
 -- Dumping data for table `reserve`
 --
 
-INSERT INTO `reserve` (`id`, `room_id`, `customer_name`, `customer_email`, `check_in`, `from_time`, `check_out`, `to_time`, `number_of_days`, `adults`, `children`, `cost_per_day`, `amount_due`, `created_at`, `updated_at`) VALUES
-(19, 2, 'Godlove Abilandou', 'godloveabilandou@gmail.com', '2019-07-16', '09:09:00', '2019-07-18', '08:08:00', NULL, 1, 0, NULL, NULL, '2019-07-15 13:55:46', '2019-07-15 13:55:46'),
-(21, 9, 'Godlove Abilandou', 'godloveabilandou@gmail.com', '2019-07-10', '07:07:00', '2019-07-17', '04:05:00', NULL, 1, 0, NULL, NULL, '2019-07-15 15:29:37', '2019-07-15 15:29:37'),
-(22, 5, 'Peterson', 'peterson@gmail.com', '2019-07-18', '03:03:00', '2019-07-19', '13:03:00', NULL, 1, 0, NULL, NULL, '2019-07-18 04:33:42', '2019-07-18 04:33:42'),
-(23, 11, 'Godlove Abilandou', 'godloveabilandou@gmail.com', '2019-07-18', '01:44:00', '2019-07-14', '17:05:00', NULL, 1, 0, NULL, NULL, '2019-07-18 08:59:22', '2019-07-18 08:59:22'),
-(24, 13, 'Christian', 'godloveabilandou@gmail.com', '2019-07-18', '06:06:00', '2019-07-14', '04:04:00', NULL, 1, 0, NULL, NULL, '2019-07-18 09:05:34', '2019-07-18 09:05:34');
+INSERT INTO `reserve` (`id`, `room_id`, `customer_id`, `check_in`, `from_time`, `check_out`, `to_time`, `adults`, `children`, `created_at`, `updated_at`) VALUES
+(26, 5, 1, '2019-07-18', '09:09:00', '2019-07-19', '21:09:00', 1, 0, '2019-07-18 20:09:11', '2019-07-18 20:09:11'),
+(28, 11, 1, '2019-07-18', '05:05:00', '2019-07-19', '17:05:00', 1, 0, '2019-07-18 20:55:50', '2019-07-18 20:55:50');
 
 -- --------------------------------------------------------
 
@@ -569,10 +564,10 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `number`, `category`, `description`, `price`, `date_free`, `time_free`, `image`, `booked`, `created_at`, `updated_at`) VALUES
-(5, 'Home sweet home', '012', 'Double Bed Room', ' Perfect Room we have here.  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here.\r\n                            \r\n                            \r\n                            \r\n                            ', 450, '2019-07-20', '03:33:00', NULL, 0, '2019-06-07 02:40:14', '2019-07-18 09:00:10'),
-(9, 'Best Ever', '013', 'Double Bed Room VIP', '                              This is a really interesting part of the rooms we gat here\r\n                            \r\n                            ', 3634, '2019-07-06', '03:03:00', NULL, 0, '2019-06-07 03:15:38', '2019-07-18 09:00:15'),
+(5, 'Home sweet home', '012', 'Double Bed Room', ' Perfect Room we have here.  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here  Perfect Room we have here.\r\n                            \r\n                            \r\n                            \r\n                            ', 450, '2019-07-20', '03:33:00', NULL, 1, '2019-06-07 02:40:14', '2019-07-18 20:09:11'),
+(9, 'Best Ever', '013', 'Double Bed Room VIP', '                              This is a really interesting part of the rooms we gat here\r\n                            \r\n                            ', 3634, '2019-07-06', '03:03:00', NULL, 1, '2019-06-07 03:15:38', '2019-07-18 20:24:44'),
 (10, 'Tight and all set up', '014', 'Double Bed Room VIP', '                                                            Very eloquent and free from stress\r\n                            \r\n                            \r\n                            ', 454, '2019-07-13', '05:05:00', NULL, 1, '2019-06-07 03:22:20', '2019-07-18 05:24:00'),
-(11, 'Suitable For you here.', '021', 'Double Bed Room', '                                                                                          This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room.\r\n                            \r\n                            \r\n                            \r\n                            \r\n                            ', 500, '2019-07-11', '17:05:00', NULL, 0, '2019-07-01 05:38:26', '2019-07-18 09:00:20'),
+(11, 'Suitable For you here.', '021', 'Double Bed Room', '                                                                                          This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room This is a nice room.\r\n                            \r\n                            \r\n                            \r\n                            \r\n                            ', 500, '2019-07-11', '17:05:00', NULL, 1, '2019-07-01 05:38:26', '2019-07-18 20:55:50'),
 (12, 'VIP Sui', '023', 'Single Bed Room VIP', 'Awesome bath tub and other facilitites', 40000, '2019-07-17', '12:23:00', NULL, 1, '2019-07-11 09:16:24', '2019-07-18 08:17:03');
 
 -- --------------------------------------------------------
@@ -705,7 +700,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -723,7 +718,7 @@ ALTER TABLE `guest`
 -- AUTO_INCREMENT for table `meals`
 --
 ALTER TABLE `meals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `positions`
@@ -735,7 +730,7 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT for table `reserve`
 --
 ALTER TABLE `reserve`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `rooms`
