@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2019 at 12:27 PM
+-- Generation Time: Jul 19, 2019 at 06:56 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -378,6 +378,8 @@ CREATE TABLE `customers` (
   `phone` varchar(100) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
   `has_room` int(11) NOT NULL DEFAULT '0',
+  `has_order` int(11) NOT NULL DEFAULT '0',
+  `seen` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -386,15 +388,16 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `city`, `state`, `country`, `address`, `phone`, `password`, `has_room`, `created_at`, `updated_at`) VALUES
-(1, 'Godlove', 'Abilandou', 'godloveabilandou@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672722945', 'godlove', 1, '2019-05-02 16:39:09', '2019-07-18 20:55:50'),
-(2, 'Glenn', 'Fritz', 'gnhsglenn@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672725433', 'godlove', 0, '2019-05-02 16:50:30', '2019-05-02 15:50:30'),
-(3, 'Christian', 'Esendege', 'christ@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '6727234342', 'godlove', 0, '2019-05-02 16:59:21', '2019-05-02 15:59:21'),
-(4, 'Engineer', 'Abilandou', 'abilandougodlove@gmail.com', 'Tala', 'Talam', 'United States Of America', 'Tala Street', '5639485848', 'godlove', 0, '2019-05-01 18:09:09', '2019-07-18 21:13:19'),
-(5, 'Christian', 'talam', 'zakam@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '78565644', 'godlove', 0, '2019-05-17 06:59:07', '2019-05-17 05:59:07'),
-(6, 'Dilon', 'Jaba', 'adulf@gmail.com', 'Buea', 'South-Westes', 'Cameroon', 'Malingo', '67849848', 'godlove', 0, '2019-05-17 07:00:30', '2019-05-17 06:00:30'),
-(8, 'Perete', 'Pereta', 'peretata@gmail.com', 'Yaounde', 'Central', 'Cameroon', 'Tombel Street', '+237672722945', NULL, 0, '2019-07-18 18:14:48', '2019-07-18 17:14:48'),
-(9, 'Bilares', 'Bilong', 'bilong@gmail.com', 'Yaounde', 'Central', 'Cameroon', 'Tombel Street', '+237672722945', NULL, 0, '2019-07-18 21:23:55', '2019-07-18 20:23:55');
+INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `city`, `state`, `country`, `address`, `phone`, `password`, `has_room`, `has_order`, `seen`, `created_at`, `updated_at`) VALUES
+(1, 'Godlove', 'Abilandou', 'godloveabilandou@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672722945', 'godlove', 1, 1, 1, '2019-05-02 16:39:09', '2019-07-19 16:50:55'),
+(2, 'Glenn', 'Fritz', 'gnhsglenn@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '672725433', 'godlove', 0, 0, 0, '2019-05-02 16:50:30', '2019-07-19 15:10:48'),
+(3, 'Christian', 'Esendege', 'christ@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '6727234342', 'godlove', 0, 0, 0, '2019-05-02 16:59:21', '2019-07-19 14:49:08'),
+(4, 'Engineer', 'Abilandou', 'abilandougodlove@gmail.com', 'Tala', 'Talam', 'United States Of America', 'Tala Street', '5639485848', 'godlove', 0, 0, 0, '2019-05-01 18:09:09', '2019-07-19 14:49:12'),
+(5, 'Christian', 'talam', 'zakam@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo', '78565644', 'godlove', 0, 0, 0, '2019-05-17 06:59:07', '2019-07-19 14:49:17'),
+(6, 'Dilon', 'Jaba', 'adulf@gmail.com', 'Buea', 'South-Westes', 'Cameroon', 'Malingo', '67849848', 'godlove', 0, 0, 0, '2019-05-17 07:00:30', '2019-07-19 14:49:21'),
+(8, 'Perete', 'Pereta', 'peretata@gmail.com', 'Yaounde', 'Central', 'Cameroon', 'Tombel Street', '+237672722945', NULL, 0, 0, 0, '2019-07-18 18:14:48', '2019-07-19 14:49:25'),
+(9, 'Bilares', 'Bilong', 'bilong@gmail.com', 'Yaounde', 'Central', 'Cameroon', 'Tombel Street', '+237672722945', NULL, 0, 0, 0, '2019-07-18 21:23:55', '2019-07-19 14:49:29'),
+(10, 'Police', 'Poline', 'policepoline@gmail.com', 'Buea', 'South-Westest', 'Cameroon', 'Malingo street', '+237672722945', 'police', 0, 0, 0, '2019-07-19 15:54:25', '2019-07-19 14:54:25');
 
 -- --------------------------------------------------------
 
@@ -481,7 +484,7 @@ CREATE TABLE `meals` (
 --
 
 INSERT INTO `meals` (`id`, `room_id`, `guest_id`, `meal_type`, `number_of_plates`, `amount_per_plate`, `total_amount`, `received`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 'Break Fast', 4, 1000, 4000, 0, '2019-07-19 10:18:45', '0000-00-00 00:00:00');
+(3, 5, 1, 'Break Fast', 2, 1000, 2000, 0, '2019-07-19 16:49:58', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -697,7 +700,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -715,7 +718,7 @@ ALTER TABLE `guest`
 -- AUTO_INCREMENT for table `meals`
 --
 ALTER TABLE `meals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `positions`
@@ -727,13 +730,13 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT for table `reserve`
 --
 ALTER TABLE `reserve`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `try`
