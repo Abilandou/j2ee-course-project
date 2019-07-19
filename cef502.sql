@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2019 at 09:38 AM
+-- Generation Time: Jul 19, 2019 at 12:27 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -471,6 +471,7 @@ CREATE TABLE `meals` (
   `number_of_plates` int(11) DEFAULT NULL,
   `amount_per_plate` int(11) DEFAULT NULL,
   `total_amount` int(11) NOT NULL,
+  `received` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -479,11 +480,8 @@ CREATE TABLE `meals` (
 -- Dumping data for table `meals`
 --
 
-INSERT INTO `meals` (`id`, `room_id`, `guest_id`, `meal_type`, `number_of_plates`, `amount_per_plate`, `total_amount`, `created_at`, `updated_at`) VALUES
-(1, 9, 1, 'Break Fast', 3, 1000, 3000, '2019-07-18 03:46:10', '0000-00-00 00:00:00'),
-(2, 9, 21, 'Launch', 2, 1500, 3000, '2019-07-18 04:03:40', '0000-00-00 00:00:00'),
-(3, 5, 22, 'Supper', 2, 3000, 6000, '2019-07-18 04:35:03', '0000-00-00 00:00:00'),
-(4, 5, 1, 'Break Fast', 2, 3000, 6000, '2019-07-19 05:20:10', '0000-00-00 00:00:00');
+INSERT INTO `meals` (`id`, `room_id`, `guest_id`, `meal_type`, `number_of_plates`, `amount_per_plate`, `total_amount`, `received`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, 'Break Fast', 4, 1000, 4000, 0, '2019-07-19 10:18:45', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -535,8 +533,7 @@ CREATE TABLE `reserve` (
 --
 
 INSERT INTO `reserve` (`id`, `room_id`, `customer_id`, `check_in`, `from_time`, `check_out`, `to_time`, `adults`, `children`, `created_at`, `updated_at`) VALUES
-(26, 5, 1, '2019-07-18', '09:09:00', '2019-07-19', '21:09:00', 1, 0, '2019-07-18 20:09:11', '2019-07-18 20:09:11'),
-(28, 11, 1, '2019-07-18', '05:05:00', '2019-07-19', '17:05:00', 1, 0, '2019-07-18 20:55:50', '2019-07-18 20:55:50');
+(26, 5, 1, '2019-07-18', '09:09:00', '2019-07-19', '21:09:00', 1, 0, '2019-07-18 20:09:11', '2019-07-18 20:09:11');
 
 -- --------------------------------------------------------
 
@@ -718,7 +715,7 @@ ALTER TABLE `guest`
 -- AUTO_INCREMENT for table `meals`
 --
 ALTER TABLE `meals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `positions`
