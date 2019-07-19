@@ -58,6 +58,7 @@
                           <th  width="3%">Plate(s)</th>
                           <th  width="5%">Cost/Plate</th>
                           <th  width="3%">Total</th>
+                          <th  width="6%">Received</th>
                           <th  width="10%">Date/Time</th>
                           <th  width="10%">Actions</th>
                       </tr>
@@ -81,10 +82,23 @@
                             <td><%=resultSet.getString("meals.number_of_plates")  %></td>
                             <td><%=resultSet.getString("meals.amount_per_plate")%></td>
                             <td><%=resultSet.getString("meals.total_amount")%></td>
+                            <td>
+                              <%
+                                if(Integer.parseInt(resultSet.getString("meals.received")) == 1){
+                                    %>
+                                    <p class="green-text"><b>Received</b></p>
+                                    <%
+                                }else{
+                                  %>
+                                  <p class="blue-text"><b>Pending...</b></p>
+                                  <%
+                                }
+                              %>
+                              </td>
                             <td><%=resultSet.getString("meals.created_at")%></td>
                             <td>
                                 <a  href="./edit_category.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-success btn-sm" title="Edit room"><i class="fa fa-edit fa-lg">edit</i></a>
-                                <a href="delete_category.jsp?uid=<%=resultSet.getString("id")%>" title="delete This category" id="delcat" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash fa-lg"></i></a>
+                                <a href="./meals/delete_meal.jsp?uid=<%=resultSet.getString("id")%>" title="delete This meal order" id="delcat" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash fa-lg"></i></a>
                             </td>
                         </tr> 
                         <%
