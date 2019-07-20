@@ -138,7 +138,7 @@
                                         }//End if 
                                          else{
                                         %>
-                                        <p class="green-text">No Meals Information for this Guest. Assign a room to the guest and make meal order.</p>
+                                        <p class="green-text">No Meals Information for this Guest. Assign or wait for guest to book room and and make meal order.</p>
                                         <%
                                         }   
                                         }catch(Exception e){
@@ -176,7 +176,7 @@
                                         }//End if
                                          else{
                                         %>
-                                        <p class="green-text">No Reservation Information for this Guest. Assign a room to the guest to view information.</p>
+                                        <p class="green-text">No Reservation Information for this Guest. Assign room or wait for guest to book room to view information.</p>
                                         <%
                                         }   
                                         }catch(Exception e){

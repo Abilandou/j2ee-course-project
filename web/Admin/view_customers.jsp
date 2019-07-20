@@ -57,8 +57,8 @@
                         <table class="table-bordered  table-responsive table-hover">
                             <tr>
                                 <th width="1%" class=" text-center">id</th>
-                                <th width="8%" class=" text-center">First Name</th>
-                                <th width="15%" class=" text-center">Email</th>
+                                <th width="11%" class=" text-center">Name</th>
+                                <th width="12%" class=" text-center">Email</th>
                                 <th width="8%" class=" text-center">Phone</th>
                                 <th width="8%" class=" text-center">City</th>
                                 <th width="10%" class=" text-center">Country</th>
@@ -78,7 +78,7 @@
                             %>
                             <tr>
                               <td><%=resultSet.getString("id")  %></td>
-                              <td><%=resultSet.getString("first_name")  %></td>
+                              <td><%=resultSet.getString("first_name")  %> <%=resultSet.getString("last_name")  %></td>
                               <td><%=resultSet.getString("email")  %></td>
                               <td><%=resultSet.getString("phone")  %></td>
                               <td><%=resultSet.getString("city")  %></td>
@@ -98,7 +98,14 @@
                               </td>
                               <td>
                                 <a href="guest_det.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-primary btn-xs" title="view Guest's details"><i class="fa fa-eye fa-lg"></i>view</a>
-                                <a href="reserve.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-info btn-xs" title="Make Reservation"><i class="material-icons">event_available</i>Reserve</a>
+                                <%
+                                if(Integer.parseInt(resultSet.getString("has_room")) == 0){
+                                 %>
+                                      <a href="reserve.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-info btn-xs" title="Make Reservation"><i class="material-icons">event_available</i>Reserve</a>
+                                <%
+                                }
+                                %>
+                                
                                 <a href="#" class="btn btn-danger btn-xs" title="delete this Guest"><i class="fa fa-trash"></i>delete</a>
                               </td>
                             </tr>

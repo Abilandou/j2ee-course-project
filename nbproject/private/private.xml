@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/meal_order.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/src/java/TestClass.java</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/reserve.jsp</file>
-            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/TestClass.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/meals/done_eating.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/account.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/meals/meal_confirm.jsp</file>
+            <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/meals/accept_meal.jsp</file>
             <file>file:/home/godlove/Desktop/JavaProjects/CEF502HOTELMANAGEMENT/web/Admin/meals.jsp</file>
         </group>
     </open-files>

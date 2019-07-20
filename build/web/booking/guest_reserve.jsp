@@ -12,78 +12,60 @@
         <%@page import="java.sql.*" %>
     </head>
     <body>
-         <%
-           
-      
-          String strt = request.getParameter("uid");
-          String str1 = request.getParameter("booked");
-          String str2 = request.getParameter("hid");
-          
-       try{
-           Class.forName("com.mysql.jdbc.Driver");
-            
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
-            Statement stat = con.createStatement();
-            String query = "UPDATE  rooms  SET booked='"+1+"' WHERE id='"+strt+"'";
-           int i = stat.executeUpdate(query);
-           if(i == 1){
-               response.sendRedirect("./booking.jsp");
-               out.println("<h4 class='text-danger'>Sorry, Unable To Book this room at this moment</h4>");
-           }
-           else{
-//              out.println("<h4 class='text-danger'>Sorry, Update not successfull</h4>");
-           }
-        }
-       catch(Exception e){
-//           response.sendRedirect("./../404.jsp");
-            out.println(e);
-         
-       }
-       %>
+  
+            <!--Guest Room Reservation logic-->
         <%
-            try{
-              
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
-                
-                if(request.getParameter("guestReserve") != null ){
-                    String name, email, phone, country, adults, children, check_in, check_out, determinant;
-                    
-                    name = request.getParameter("name");
-                    email = request.getParameter("email");
-                    phone = request.getParameter("phone");
-                    country =request.getParameter("country");
-                    adults = request.getParameter("adults");
-                    children =request.getParameter("children");
-                    check_in = request.getParameter("check_in");
-                    check_out = request.getParameter("check_out");
-                    determinant = request.getParameter("determinant");
-                    
-                    PreparedStatement prepareStmnt = null;
-                    
-                    prepareStmnt = con.prepareStatement("INSERT INTO guest (name, email, phone, country, adults, children, check_in, check_out, determinant) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    prepareStmnt.setString(1, name);
-                    prepareStmnt.setString(2, email);
-                    prepareStmnt.setString(3, phone);
-                    prepareStmnt.setString(4, country);
-                    prepareStmnt.setString(5, adults);
-                    prepareStmnt.setString(6, children);
-                    prepareStmnt.setString(7, check_in);
-                    prepareStmnt.setString(8, check_out);
-                    prepareStmnt.setString(9, determinant);
-                    
-                    prepareStmnt.executeUpdate();
-                    
-                    request.setAttribute("msg", "Success");
-                    response.sendRedirect("./../request_reserve.jsp");
-                    
-                    con.close();
-                }
-                
-            }catch(Exception ex){
-                out.println(ex);
-            }
-        
-        %>
+
+        try{
+
+         Class.forName("com.mysql.jdbc.Driver");
+
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+
+         if(request.getParameter("reserveBut") != null){
+             String  room_id,  customer_id, determinant;
+             String check_in, check_out, from_time, to_time, adults, children;
+
+             //Calculatin the amount due to insert in the database.
+
+             room_id=request.getParameter("room_id");
+             customer_id=request.getParameter("customer_id");
+             check_in =request.getParameter("check_in");
+             from_time =request.getParameter("from_time");
+             check_out=request.getParameter("check_out");
+             to_time =request.getParameter("to_time");
+             adults=request.getParameter("adults");
+             children=request.getParameter("children");
+             determinant=request.getParameter("determinant");
+
+
+             PreparedStatement preparestmnt = null; //Create statement
+             String querry1 = "insert into reserve(room_id,"+
+                     "customer_id, check_in, from_time, check_out, to_time, adults, children, determinant) values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+             preparestmnt = con.prepareStatement(querry1);
+
+             preparestmnt.setString(1, room_id);
+             preparestmnt.setString(2, customer_id);
+             preparestmnt.setString(3, check_in);
+             preparestmnt.setString(4, from_time);
+             preparestmnt.setString(5, check_out);
+             preparestmnt.setString(6, to_time);
+             preparestmnt.setString(7, adults);
+             preparestmnt.setString(8, children);
+             preparestmnt.setString(9, determinant);
+
+             preparestmnt.executeUpdate(); //execute query
+
+             String message = "Reservation made successfully";
+             request.setAttribute("msg", message);
+             response.sendRedirect("./../thanks_booking.jsp");
+
+             con.close();
+         }
+         }catch(Exception e){
+             out.println(e);
+         }
+
+        %> 
     </body>
 </html>

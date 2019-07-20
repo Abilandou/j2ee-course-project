@@ -17,7 +17,7 @@
 </head>
 <body style="border: 0;">
 <section>
-  <img  class="img-fluid" src="hotel1.png" alt="Norway"
+  <img  class="img-fluid" src="images/home/hotel2.jpeg" alt="image"
         style="
             opacity:0.5;
             background-color:black;
@@ -72,7 +72,7 @@
 </section>
     
 <section>
-  <img  class="img-fluid" src="hotel1.png" alt="Norway"
+  <img  class="img-fluid" src="images/home/hotel2.jpeg" alt="Norway"
         style="
             opacity:0.5;
             background-color:black;

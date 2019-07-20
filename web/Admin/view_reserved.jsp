@@ -43,11 +43,10 @@
                             <table class="table-bordered  table-responsive table-hover" id="myDataTable">
                                 <tr>
                                     <th width="1%" class=" text-center bg-danger">id</th>
-                                    <th width="20%" class=" text-center bg-primary">Room Name</th>
-                                    <th width="5%" class=" text-center bg-warning">Room Number</th>
+                                    <th width="20%" class=" text-center bg-primary">Room Name/#</th>
                                     <th width="15%" class=" text-center red white-text">Guest Name</th>
-                                    <th width="15%" class=" text-center bg-info">Guest Email</th>
-                                    <th width="5%" class=" text-center bg-info">Status</th>
+                                    <th width="5%" class=" text-center bg-info">Room Status</th>
+                                    <th width="7%" class=" text-center bg-info" title="Determines who is responsible for this reservation.">Determinant</th>
                                     <th width="12%" class=" text-center bg-success">CheckIn/time</th>
                                     <th width="12%" class=" text-center bg-primary">CheckOut/time</th>
                                     <th width="2%" class=" text-center bg-danger">Adults</th>
@@ -75,10 +74,8 @@
                                %>
                                 <tr>
                                     <td><%= rs.getInt(1)%></td>
-                                    <td><%= rs.getString("rooms.name")%></td>
-                                    <td><%= rs.getString("rooms.number")%></td>
+                                    <td><%= rs.getString("rooms.name")%>/<%= rs.getString("rooms.number")%></td>
                                     <td><%= rs.getString("customers.first_name")%> <%= rs.getString("customers.last_name")%></td>
-                                    <td><%= rs.getString("customers.email")%></td>
                                     <td>
                                          <%
                                             if(Integer.parseInt(rs.getString("booked")) == 1){
@@ -92,14 +89,43 @@
                                             }
                                         %>
                                     </td>
+                                    <td>
+                                         <%
+                                            if(Integer.parseInt(rs.getString("reserve.determinant")) == 0){
+                                                %>
+                                                <p class="text-center " title="Reservation done by admin"><b>Admin</b></p>
+                                                <%
+                                            }else{
+                                              %>
+                                              <p title="Done by guest from the site." ><b>Guest Request</b></p>
+                                              <%
+                                            }
+                                        %>
+                                    </td>
                                     <td><%= rs.getString("check_in")%>/<%= rs.getString("from_time")%></td>
                                     <td><%= rs.getString("check_out")%>/<%= rs.getString("to_time")%></td>
                                     <td><%= rs.getString("adults")%></td>
                                     <td><%= rs.getString("children")%></td>
                                     <td><%= rs.getString("price")%></td>
                                     <td>
-                                        <a  href="./edit_reserve.jsp?uid=<%=rs.getString("id")%>" class="btn btn-primary btn-xs" title="Edit Reservation">Edit<i class="fa fa-edit fa-lg"></i></a>
-                                        <a href="./Reservation/cancel_reserve.jsp?uid=<%=rs.getString("id")%>" title="Cancel Reservation" id="cancelreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Cancel</a>
+                                        
+                                        <%
+                                            if(Integer.parseInt(rs.getString("reserve.determinant")) == 0){
+                                                %>
+                                                <a  href="./edit_reserve.jsp?uid=<%=rs.getString("id")%>" class="btn btn-primary btn-xs" title="Edit Reservation">Edit<i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="./Reservation/cancel_reserve.jsp?uid=<%= rs.getString("reserve.id")%>" title="Cancel Reservation" id="cancelreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Cancel</a>
+                                                <%
+                                            }
+                                            %>
+                                            <%
+                                            if(Integer.parseInt(rs.getString("reserve.determinant")) == 1){
+                                            %>
+                                                
+                                                <a href="./Reservation/accept_reserve.jsp?uid=<%= rs.getString("reserve.id")%>" title="Accept Reservation" id="acceptreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Accept</a>
+                                                <%
+                                            }
+                                            %>
+                                        
                                         <a href="./Reservation/del_reserve.jsp?uid=<%=rs.getString("id")%>" title="Delete Reservation" id="delreserve" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-lg"></i>Delete</a>
                                     </td>
                                 </tr>
@@ -119,7 +145,7 @@
     <script>
         $("a#cancelreserve").click(function() {
         // alert('something');
-            if (confirm("Are You Sure To cancel this reservation? You will never recover it again")) {
+            if (confirm("Are You Sure To cancel this reservation?")) {
                 return true;
             }
             return false;
@@ -128,6 +154,13 @@
         $("a#delreserve").click(function() {
         // alert('something');
             if (confirm("Are You Sure To delete this reservation? You will never recover it again")) {
+                return true;
+            }
+            return false;
+        });
+        $("a#acceptreserve").click(function() {
+        // alert('something');
+            if (confirm("Are You Sure To accept guest request for reservation?")) {
                 return true;
             }
             return false;

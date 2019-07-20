@@ -92,6 +92,8 @@
                     }
                
                 %>
+                
+                <!--Room Reservation logic-->
                 <%
                  
                try{

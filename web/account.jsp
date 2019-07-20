@@ -34,7 +34,7 @@
                             if ((session.getAttribute("email") != null) || (session.getAttribute("email") != "")) {
                             %>
                               <div class="col-sm-6 my-4 ">
-                                  <div class="card">
+                                  <div class="card container-fluid">
                                    <h5 class="orange-text text-darken-4 text-center card z-depth-3 bg-info">Personal Information</h5>
                                    <p>Full Name:<b><%=rst.getString("first_name")  %> <%=rst.getString("last_name")  %></b></p>
                                    <p>Email:<b><%=rst.getString("email")  %></b></p>
@@ -183,9 +183,9 @@
                                         </div>
                                        </div>
                                        <%
-                                   }else{
+                                   }else {
                                      %>
-                                     <p class="green-text"><b>Please Be Patient for A room to be assigned to you before you can see what is on the menu.</b></p>
+                                     <p class="green-text"><b>Please Be Patient for A room to be assigned to you to see other information.</b></p>
                                      <%
                                    }
                                   %>
