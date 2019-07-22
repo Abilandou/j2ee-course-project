@@ -132,9 +132,9 @@
                         <label class="text-dark lead">Meal Type<span class="text-danger">*</span></label>
                         <select name="meal_type" required="" class="form-control">
                              <option value=" ">Select Meal Type</option>
-                             <option value="Break Fast" >Break Fast</option>
-                             <option value="Launch" >Launch</option>
-                             <option value="Supper" >Supper</option>
+                             <option value="Break Fast" >Break Fast (1000F A Plate)<</option>
+                             <option value="Launch" >Launch (1000F A Plate)<</option>
+                             <option value="Supper" >Supper (1000F A Plate)<</option>
                              
                         </select>
                     </div>
@@ -153,6 +153,7 @@
                         <input required 
                             class="form-control" 
                             type="number" name="amount_per_plate" 
+                            min="1000" max="1000"
                             id="amount_plates" 
                             required
                         >

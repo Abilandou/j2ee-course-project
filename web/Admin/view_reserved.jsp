@@ -8,7 +8,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="java.sql.*" %>
-<%@page import="java.util.*" %>
+
+  <%@page import="java.text.DateFormat"%>
+        
+        <%@page import="java.text.SimpleDateFormat"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -113,12 +116,12 @@
                                             if(Integer.parseInt(rs.getString("reserve.determinant")) == 0){
                                                 %>
                                                 <a  href="./edit_reserve.jsp?uid=<%=rs.getString("id")%>" class="btn btn-primary btn-xs" title="Edit Reservation">Edit<i class="fa fa-edit fa-lg"></i></a>
-                                                <a href="./Reservation/cancel_reserve.jsp?uid=<%= rs.getString("reserve.id")%>" title="Cancel Reservation" id="cancelreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Cancel</a>
+                                                <a href="./Reservation/cancel_reserve.jsp?uid=<%= rs.getString("reserve.id")%>" title="Cancel Reservation" id="cancelreserve" class="btn btn-info btn-xs"><i class="fa fa-times fa-lg"></i>Cancel</a>
                                                 <%
                                             }
                                             %>
                                             <%
-                                            if(Integer.parseInt(rs.getString("reserve.determinant")) == 1){
+                                            if((Integer.parseInt(rs.getString("reserve.determinant")) == 1) && (Integer.parseInt(rs.getString("rooms.booked")) == 0)){
                                             %>
                                                 
                                                 <a href="./Reservation/accept_reserve.jsp?uid=<%= rs.getString("reserve.id")%>" title="Accept Reservation" id="acceptreserve" class="btn btn-info btn-xs"><i class="fa fa-trash fa-lg"></i>Accept</a>
@@ -139,10 +142,16 @@
                     </div>
                 </div>
             </div>
+                            
+                 
         </div>
     </div>
 </div>
     <script>
+         $(function() {
+     $( ".datepicker" ).datepicker();
+       });
+        
         $("a#cancelreserve").click(function() {
         // alert('something');
             if (confirm("Are You Sure To cancel this reservation?")) {
@@ -165,6 +174,8 @@
             }
             return false;
         });
+        
+        
         
     </script>  
 <div>

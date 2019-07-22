@@ -6,9 +6,15 @@
 <%@page import="java.sql.*" %>
 
 <div class="navbar-fixed ">
-  <nav class="white" >
+  <nav class="indigo lighten-1" >
     <div class="nav-wrapper">
-      <a class="navbar-brand" href="}"><img src="" alt="Norway"></a>
+        <a class="navbar-brand" href="index.jsp"><b class="orange-text text-darken-4">CEF502</b></a>
+        <div  style="margin-left: 300px;">
+            <ul>
+                <li  style="margin-top: -20px;">(+237) 672-722-945 / 677-443-398<i class="fa fa-phone"></i></li>
+                 <li style="margin-top: -20px; margin-left: 20px;">infocef502hotel@gmail.com<i class="fa fa-envelope-open"></i></li>
+            </ul> 
+        </div>
       <ul class="right hide-on-med-and-down">
           <li class="black-text">
             <div class="pull-right"> 
@@ -47,44 +53,44 @@
   </nav>
 </div>
 <div class="navbar-fixed ">
-  <nav class=" white" style="text-align:center;">
+  <nav class=" indigo lighten-1" style="text-align:center;">
     <div class="nav-wrapper" style="padding-left:200px; padding-right:60px;" >
-      <ul class=" hide-on-med-and-down"  >
+      <ul class=" hide-on-med-and-down">
          <li class="nav-item ">
-        <a class=" black-text nav-link" href="index.jsp"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>
+        <a href="index.jsp">Home<i class="fa fa-home"></i></a>
       </li>
       <li class=" nav-item ">
-        <a class=" black-text nav-link" href="rooms.jsp"><i class="fa fa-list"></i>Rooms</a>
+        <a href="rooms.jsp">Rooms<i class="fa fa-list"></i></a>
       </li>
       <li class=" nav-item ">
-        <a class=" black-text nav-link" href="about.jsp"><i class="fa fa-gg-circle"></i>About</a>
+        <a href="about.jsp">About<i class="fa fa-gg-circle"></i></a>
       </li>
       <li class="nav-item ">
-        <a class=" black-text nav-link" href="contact.jsp"><i class="fa fa-envelope-open"></i>Contact</a>
+        <a href="contact.jsp">Contact<i class="fa fa-envelope-open"></i></a>
       </li>
       <%
           if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
         %>
             <li class=" nav-item right">
-        <a class=" black-text nav-link" href="Login.jsp"><i class="fa fa-lock"></i>Login</a>
+        <a  href="Login.jsp">Login<i class="fa fa-lock"></i></a>
       </li>
         <%} else {
         %>
       <li class=" nav-item right ">
-        <a class=" black-text nav-link" href="account.jsp">
+        <a class=" black-text " href="account.jsp">
             <%
                 if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
             %>
             <%} else {
             %>
-                <i class="fa fa-user"></i><b class="orange-text text-darken-4"><%=session.getAttribute("email")%></b> 
+                <b class="orange-text text-darken-4"><%=session.getAttribute("email")%></b><i class="fa fa-user"></i> 
             <%
                 }
             %>
         </a>
       </li>  
       <li class=" nav-item right">
-        <a class=" black-text nav-link" href="./logout.jsp"><i class="fa fa-arrow-right"></i>Logout</a>
+        <a class="nav-link" href="./logout.jsp">Logout<i class="fa fa-arrow-right"></i></a>
       </li>
         <%
             }
@@ -93,4 +99,5 @@
     </div>
   </nav>
 </div>
+
   

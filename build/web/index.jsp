@@ -17,24 +17,26 @@
 </head>
 <body style="border: 0;">
 <section>
-  <img  class="img-fluid" src="images/home/hotel2.jpeg" alt="image"
+  <img  class="img-fluid" src="images/home/hotel1.jpg" alt="image"
         style="
-            opacity:0.5;
+            opacity:1;
             background-color:black;
             margin-top:-120px;
             width:100%;
-            height:400px;
+            height:500px;
         "
   >
   <div class="text-block"
        style="
           position: absolute;
-          bottom: 400px;
+          bottom: 300px;
           left: 20px;
           background-color: teal;
           padding: 20px;
           border-radius:8px;
           color:pink;
+          opacity:0.5px, black;
+         
 
         "
         >
@@ -43,132 +45,145 @@
   </div>
 </section>
     
-<section style="margin-bottom: 200px;">
-    <div class="container">
+<section style="margin-bottom: 20px;">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Our Services.</h5>
-                <div class="col-sm-4 teal">
-                    <p>Room Reservation Room Reservation Room Reservation</p>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Room Reservation<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">Room Reservation</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Room Reservation<i class="material-icons right">close</i></span>
+                            <p>Room Reservation Room Reservation Room Reservation.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 red">
-                    <p>Booking Services Booking Services Booking Services</p>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Booking Services<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">Ambulance Services</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Ambulance Services<i class="material-icons right">close</i></span>
+                            <p>Ambulance Services Ambulance Services Ambulance Services.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 grey">
-                    <p>Restaurants Restaurants Restaurants Restaurants</p>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Restaurant Services<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">Restaurant Services</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Restaurant Services<i class="material-icons right">close</i></span>
+                            <p>Restaurant Services Restaurant Services Restaurant Services.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 orange">
-                    <p>Sporting Sporting Sporting Sporting Sporting</p>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Sport Services<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">Sport Services</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Sport Services<i class="material-icons right">close</i></span>
+                            <p>Sports Sports Sports Sports Sports.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 blue">
-                    <p>Swimming Pool Swimming Pool Swimming Pool</p>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Swimming Services<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">Swimming Services</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Swimming Services<i class="material-icons right">close</i></span>
+                            <p>Swimming Pool Swimming Pool Swimming Pool.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 yellow">
-                    <p>Logging Facility Logging Facility Logging Facility</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-<section>
-  <img  class="img-fluid" src="images/home/hotel2.jpeg" alt="Norway"
-        style="
-            opacity:0.5;
-            background-color:black;
-            margin-top:-120px;
-            width:100%;
-            height:400px;
-        "
-  >
-  <div class="text-block"
-       style="
-          position: absolute;
-          bottom: 400px;
-          left: 20px;
-          background-color: teal;
-          padding: 20px;
-          border-radius:8px;
-          color:pink;
-
-        "
-        >
-    <h4 class="" >THE NEW ERA</h4>
-      <a href="./rooms.jsp" ><p class="btn btn-danger">get started<i class="material-icons prefix">trending_flat</i></p></a>
-  </div>
-</section>
-    
-<section>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="col-12">
-                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Sporting Facilities</h5>
-                <div class="col-sm-6">
-                    <p class="text-justify">
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear 
-                        Put in so many text hear Put in so many text hear Put in so many text hear 
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                    
-                    </p>
-                </div>
-                <div class="col-sm-6">
-                    <img src="hotel1.png" alt=""/>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-<section>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="col-12">
-                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Swimming Facility.</h5>
-                <div class="col-sm-6">
-                    <p class="text-justify">
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear 
-                        Put in so many text hear Put in so many text hear Put in so many text hear 
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                    </p>
-                </div>
-                <div class="col-sm-6">
-                    <img src="hotel1.png" alt=""/>
+                <div class="col-sm-4">
+                     <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Logging Facility<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">Logging Facility</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Logging Facility<i class="material-icons right">close</i></span>
+                            <p>Logging Facility Logging Facility Logging Facility.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
     
-<section>
+<section style="margin-bottom: 200px;">
     <div class="container-fluid">
-        <div class="row-fluid">
+        <div class="row">
             <div class="col-12">
-                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Bus Service.</h5>
+                <h5 class="center-align orange-text text-darken-4" style="padding-bottom:10px; " >Events And Celebrations.</h5>
                 <div class="col-sm-6">
-                    <p class="text-justify">
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                        Put in so many text hear Put in so many text hear Put in so many text hear 
-                        Put in so many text hear Put in so many text hear Put in so many text hear 
-                        Put in so many text hear Put in so many text hear Put in so many text hear
-                    
-                    </p>
+                       <p>
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                           Room Reservation Room Reservation Room Reservation
+                       </p>
                 </div>
                 <div class="col-sm-6">
-                    <img src="hotel1.png" alt=""/>
+                    <img class="activator" src="images/home/room11.jpg" alt="" width="610px;" height="350px;" />
                 </div>
             </div>
         </div>
