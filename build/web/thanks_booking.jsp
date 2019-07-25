@@ -20,7 +20,7 @@
                     <div class="col-sm-3"></div>
                     <div class="col-sm-8">
                         <h1 style="color: orange;">Thanks For Booking a Room at our hotel</h1>
-                        <p>Return to your <a href="account.jsp" class="orange-text">account</a> and be patient for a room to be allocated to you.</p>
+                        <p>Return to your <a href="account.jsp" class="orange-text">account</a> and be patient for your booking to be approved and the  room allocated to you.</p>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>

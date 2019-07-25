@@ -48,14 +48,18 @@
 //            String custsession = (String)session.getAttribute("custsession");//Retrieve value of session and getAttribute return session objecso we need to convert it to string
 ////            String custsession = theChar;
         %>
-        <section class="align-content-center " > <%-- Login Section--%>
+        <%-- Login Section--%>
+        <section class="align-content-center " > 
             <div class="container pull-center" id="LoginSection">
-                <div class="row card hoverable z-depth-5">
+                <div class="row">
                     
                     <div class="col-sm-3 col-md-3 col-xm-3 col-xl-3"></div>
-                    <div class="col-sm-6 col-md-6 col-xm-6 col-xl-6">
+                    <div class="col-sm-6 col-md-6 col-xm-6 col-xl-6 card hoverable z-depth-5">
                         <div class="card-title">
-                            <p class="lead text-capitalize text-primary"> User Login</p>
+                            <div class="indigo lighten-2 card hoverable z-depth-3" style="height:70px;margin-left:-15px; margin-right:-15px;margin-top:-5px;">
+                            <p class="lead text-capitalize white-text center-align" style="margin-top:5px; font-size:20px;"> User Login</p>
+                            <p class="lead text-capitalize orange-text center-align " style="margin-top:-15px; font-size:20px;">ABK</p>
+                            </div>
                         </div>
                         <div class="card-body mx-5">
                             <form class="UserLoginForm" name="loginForm" action="./controllers/loginHandle.jsp" method="post">
@@ -82,9 +86,10 @@
                                 <div class="form-group">
                                     <input type="submit" 
                                         value="Login" 
-                                        class="btn btn-primary"
                                         id="UserLoginButton"
                                         name="loginBut"
+                                        class="btn indigo right" 
+                                        style="margin-bottom: 10px;"
                                     >
                                 </div>
                             </form>
@@ -96,17 +101,23 @@
                     <div class="col-sm-3 col-md-3 col-xm-3 col-xl-3"></div>
                 </div>
             </div>
-        </section><%-- End Login Section--%>
-       <section class="align-content-center" > <%-- Register Section --%>
+        </section>
+        <%-- End Login Section--%>
+        
+        <%-- Register Section --%>
+       <section class="align-content-center" > 
             <div class="container pull-center" id="RegisterSection" >
-                <div class="row card hoverable z-depth-5">
-                    <div class="col-sm-3 col-md-3 col-xm-3 col-xl-3"></div>
-                    <div class="col-sm-6 col-md-6 col-xm-6 col-xl-6">
+                <div class="row ">
+                    <div class="col-sm-2 col-md-2 col-xm-2 col-xl-2"></div>
+                    <div class="col-sm-7 col-md-7 col-xm-7 col-xl-7 card hoverable z-depth-5">
                         <div class="card-title">
                             
                         </div>
-                        <div class="card-body">
-                            <p class="lead text-capitalize text-primary ">New User Register</p>
+                        <div class="card-body ">
+                            <div class="indigo lighten-2 card hoverable z-depth-3" style="height:70px;margin-left:-15px; margin-right:-15px;margin-top:-5px;">
+                            <p class="lead text-capitalize white-text center-align " style="margin-top:5px; font-size:20px;">New User Register</p>
+                            <p class="lead text-capitalize orange-text center-align " style="margin-top:-15px; font-size:20px;">ABK</p>
+                            </div>
                              <form action="./controllers/registerHandle.jsp" id="UserRegisterForm" class="mx-5" method="post">
                                 <div class="form-group">
                                     <label>First Name</label>
@@ -168,7 +179,7 @@
                                     <input type="password" class="form-control password" name="password" required id="password"  />
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="registerBut" class="btn btn-success btn-lg" value="Register" />
+                                    <input type="submit" name="registerBut" class="btn indigo right" value="Register" style="margin-bottom: 10px;" />
                                 </div>
                             </form>
                         </div>

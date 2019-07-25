@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="navbar-fixed ">
-    <footer class="page-footer teal darken-4">
+    <footer class="page-footer indigo darken-4">
         <div class="footer-top bg-dark">
             <div class="container">
                 <div class="row">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright teal darken-2">
+        <div class="footer-copyright indigo darken-2">
             <div class="container">
                 <div class="row">
                     <p class="pull-left">Copyright © 2019 Hotel Name Inc. All rights reserved.</p>

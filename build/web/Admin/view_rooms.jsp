@@ -147,7 +147,95 @@
                               <td><%=resultSet.getString("price")  %></td>
                               <td><%=resultSet.getString("date_free")  %></td>
                               <td><%=resultSet.getString("time_free")  %></td>
-                              <td><%=resultSet.getString("image")  %></td>
+                              <td>
+                                  
+                                  <%
+                                  if(Integer.parseInt(resultSet.getString("id")) == 1){
+                                      %>
+                                      <img src="images/rooms/room1.jpg" alt="" height="120px" width="120px;" />
+                                      <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 2){
+                                    %>
+                                    <img src="images/rooms/room2.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }
+                                  else if(Integer.parseInt(resultSet.getString("id")) == 3){
+                                    %>
+                                    <img src="images/rooms/room3.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }
+                                    else if(Integer.parseInt(resultSet.getString("id")) == 4){
+                                    %>
+                                    <img src="images/rooms/room4.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 5){
+                                    %>
+                                    <img src="images/rooms/room5.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 6){
+                                    %>
+                                    <img src="images/rooms/room6.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 7){
+                                    %>
+                                    <img src="images/rooms/room7.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 8){
+                                    %>
+                                    <img src="images/rooms/room8.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 9){
+                                    %>
+                                    <img src="images/rooms/room9.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 10){
+                                    %>
+                                    <img src="images/rooms/room10.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 11){
+                                    %>
+                                    <img src="images/rooms/room11.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 12){
+                                    %>
+                                    <img src="images/rooms/room11.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 13){
+                                    %>
+                                    <img src="images/rooms/room13.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 14){
+                                    %>
+                                    <img src="images/rooms/room14.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 15){
+                                    %>
+                                    <img src="images/rooms/room15.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 16){
+                                    %>
+                                    <img src="images/rooms/room16.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 17){
+                                    %>
+                                    <img src="images/rooms/room17.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 18){
+                                    %>
+                                    <img src="images/rooms/room18.jpg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 19){
+                                    %>
+                                    <img src="images/rooms/room19.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }else if(Integer.parseInt(resultSet.getString("id")) == 20){
+                                    %>
+                                    <img src="images/rooms/room20.jpeg" alt="" height="120px" width="120px;" />
+                                    <%
+                                  }
+                              %>
+                                
+                              </td>
                               <td>
                                   <!--<a href="room_single.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-primary btn-sm " title="view details"><i class="fa fa-eye fa-lg"></i></a>-->
                                   <a  href="update_room.jsp?uid=<%=resultSet.getString("id")%>" class="btn btn-success btn-sm" title="Edit room">Edit<i class="fa fa-edit fa-lg"></i></a>

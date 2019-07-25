@@ -15,6 +15,57 @@
        <title>account</title>
    </head>
    <body>
+<section>
+    <img  class="img-fluid" src="images/rooms/room5.jpeg" alt="image"
+          style="
+              opacity:0.3;
+              background-color:black;
+              margin-top:-120px;
+              width:100%;
+              height:400px;
+          "
+    >
+    <div class="text-block right"
+       style="
+          position: absolute;
+          bottom: 150px;
+          left: 200px;
+          padding: 20px;
+          border-radius:20px;
+          color:pink;
+          opacity:0.5px, black;
+         
+
+        "
+        >
+        <img src="Admin/images/avatar2.jpeg" alt="" style="border-radius: 12px;"/>
+    </div>
+  <div class="text-block"
+       style="
+          position: absolute;
+          bottom: 200px;
+          left: 450px;
+          padding: 20px;
+          border-radius:20px;
+          color:pink;
+          opacity:0.5px, black;
+         
+
+        "
+        >
+      <p>
+           <%
+                if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
+            %>
+            <%} else {
+            %>
+                <b class="orange-text text-darken-4"> Welcome <%=session.getAttribute("email")%></b><i class="fa fa-user"></i> 
+            <%
+                }
+            %>
+      </p>
+  </div>
+</section>
         <div class="container-fluid">
             <div class="row jumbotron " style="margin-top: 20px;">
                 <div class="col-12 ">
@@ -36,13 +87,13 @@
                               <div class="col-sm-6 my-4 ">
                                   <div class="card container-fluid">
                                    <h5 class="orange-text text-darken-4 text-center card z-depth-3 bg-info">Personal Information</h5>
-                                   <p>Full Name:<b><%=rst.getString("first_name")  %> <%=rst.getString("last_name")  %></b></p>
-                                   <p>Email:<b><%=rst.getString("email")  %></b></p>
-                                   <p>City:<b><%=rst.getString("city")  %></b></p>
-                                   <p>State:<b><%=rst.getString("state")  %></b></p>
-                                   <p>Country:<b><%=rst.getString("country")  %></b></p>
-                                   <p>Address:<b><%=rst.getString("address")  %></b></p>
-                                   <p>Phone:<b><%=rst.getString("phone")  %></b></p>
+                                   <p style="font-size: 16px;">Full Name:<b><%=rst.getString("first_name")  %> <%=rst.getString("last_name")  %></b></p>
+                                   <p style="font-size: 16px;">Email:<b><%=rst.getString("email")  %></b></p>
+                                   <p style="font-size: 16px;">City:<b><%=rst.getString("city")  %></b></p>
+                                   <p style="font-size: 16px;">State:<b><%=rst.getString("state")  %></b></p>
+                                   <p style="font-size: 16px;">Country:<b><%=rst.getString("country")  %></b></p>
+                                   <p style="font-size: 16px;">Address:<b><%=rst.getString("address")  %></b></p>
+                                   <p style="font-size: 16px;">Phone:<b><%=rst.getString("phone")  %></b></p>
                                   </div>
                               </div>
                               <div class="col-sm-6">
@@ -68,9 +119,9 @@
                                                             while(rs.next()){
                                                                 %>
                                                                 <h5 class="orange-text text-darken-4 text-center card z-depth-3">Room Information</h5>
-                                                                <p>Room Name:<b><%=rs.getString("rooms.name")  %></b> </p>
-                                                                <p>Room Number:<b><%=rs.getString("rooms.number")  %></b> </p>
-                                                                <p>Cost Per Day(FCFA):<b><%=rs.getString("rooms.price")  %></b> </p>
+                                                                <p style="font-size: 16px;" >Room Name:<b><%=rs.getString("rooms.name")  %></b> </p>
+                                                                <p style="font-size: 16px;">Room Number:<b><%=rs.getString("rooms.number")  %></b> </p>
+                                                                <p style="font-size: 16px;">Cost Per Day(FCFA):<b><%=rs.getString("rooms.price")  %></b> </p>
                                                                 <input type="hidden" value="<%=rs.getString("reserve.room_id")%>" name="room_id" />
                                                                 <%
                                                             }
@@ -129,15 +180,15 @@
                                                   int seen =Integer.parseInt(rst.getString("seen"));
                                               if((seen == 0) && (has_order == 1) ){
                                                   %>
-                                                  <p class="green-text text-darken-4">Success Your Order has been received</p>
+                                                  <p class="green-text text-darken-4" style="font-size: 16px;">Success Your Order has been received</p>
                                                   <%
                                               }else if(has_order == 2){
                                                 %>
-                                                <p class="green-text text-darken-4">Order Has Been Accepted And it is in Process, Please Be Patient</p>
+                                                <p class="green-text text-darken-4" style="font-size: 16px;">Order Has Been Accepted And it is in Process, Please Be Patient</p>
                                                 <%
                                                 }else if (seen == 1){
                                                     %>
-                                                    <p class="green-text text-darken-4">You just confirmed That you received your meal, enjoy your meal.</p>
+                                                    <p class="green-text text-darken-4" style="font-size: 16px;">You just confirmed That you received your meal, enjoy your meal.</p>
                                                     <%
                                                 }
                                                   %>
@@ -146,8 +197,8 @@
                                                   <select name="meal_type" required="" class="form-control">
                                                        <option value=" ">Select Meal Type</option>
                                                        <option value="Break Fast" >Break Fast (1000F A Plate)</option>
-                                                       <option value="Launch" >Launch(1000F A Plate)<</option>
-                                                       <option value="Supper" >Supper(1000F A Plate)<</option>
+                                                       <option value="Launch" >Launch(1000F A Plate)</option>
+                                                       <option value="Supper" >Supper(1000F A Plate)</option>
                                                   </select>
                                               </div>
                                               <div class="form-group">
@@ -178,14 +229,14 @@
                                        </div>
                                         <div class="container-fluid">
                                             <h5 class="orange-text text-darken-4 text-center card z-depth-3">Confirmation</h5>
-                                            <p>Please Click The Button below to confirm that the meal you requested has been delivered.</p>
+                                            <p style="font-size: 16px;">Please Click The Button below to confirm that the meal you requested has been delivered.</p>
                                             <a href="./meals/meal_confirm.jsp?uid=<%=rst.getString("id")%>" class="btn right">Confirm</a>
                                         </div>
                                        </div>
                                        <%
                                    }else {
                                      %>
-                                     <p class="green-text"><b>Please Be Patient for A room to be assigned to you to see other information.</b></p>
+                                     <p class="green-text" style="font-size: 16px;"><b>Please Be Patient for A room to be assigned to you to see other information.</b></p>
                                      <%
                                    }
                                   %>

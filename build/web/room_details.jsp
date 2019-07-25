@@ -35,172 +35,103 @@
                     <div class="row">
                         <div class="col-12">
                             <!--Form for reservation request-->
-                            <div class="clo-sm-3 col-md-3 col-xs-3 col-xl-3 grey lighten-4">
-                                <p class="pink-text darken-2" >Why Not Show Some Love, Request to Reserve For A <a href="#" class="friendword" >Friend</a> or <a href="#" class="familyword" > Family</a></p>
-                                <div class="friend" id="friend">
-                                    <form method="post" action="./booking/guest_reserve.jsp">
-                                        <p>Required fields are marked<b class="red-text">*</b></p>
-                                        <div class="form-group">
-                                            <label>Friends Name<span class="red-text">*</span></label>
-                                            <input type="text" required="" name="name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email<span class="red-text">*</span></label>
-                                            <input type="email" required="" name="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone<span class="red-text">*</span></label>
-                                            <input type="text" required="" name="phone">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Country<span class="red-text">*</span></label>
-                                            <select name="country" required="" class="form-control">
-                                                 <option value="">Select Country</option>
-                                                 <% 
-                                                     try{
-
-                                                        Class.forName("com.mysql.jdbc.Driver");
-                                                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
-                                                        Statement stm = conn.createStatement();
-                                                        String sql = "SELECT * FROM countries";
-
-                                                        ResultSet rst = stm.executeQuery(sql);
-
-                                                        while(rst.next()){
-                                                            %>
-                                                            <option value="<%=rst.getString("country_name")  %>"><%=rst.getString("country_name")  %></option>
-                                                            <%
-                                                        }
-
-                                                        }catch(Exception e){
-                                                            out.println(e);
-                                                        }
-                                                  %>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Check In<span class="red-text">*</span></label>
-                                            <input type="date" required="" name="check_in">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Check_out<span class="red-text">*</span></label>
-                                            <input type="date" required="" name="check_out">
-                                        </div>
-                                            <input type="hidden" name="determinant" value="Friend">
-                                        <div class="form-group">
-                                            <%
-                                                if(Integer.parseInt(rs.getString("booked")) == 1 ){
-                                                    %>
-                                                    Cannot be Reserved, <a href="rooms.jsp" class="pink-text" >check another</a>
-                                                    <%
-                                                }else{
-                                                    %>
-                                                    For A<a href="#" class="familyword"> Family?</a>
-                                                    <a href="./booking.jsp?uid=<%=rs.getString("id")  %>">
-                                                        <input type="submit" 
-                                                               class="btn pull-right pink " 
-                                                               name="guestReserve" 
-                                                               title="reserve for that special friend" 
-                                                               value="Request"
-                                                        >
-                                                    </a>
-                                                    <%
-                                                }
-                                            %>
-                                        </div>   
-                                    </form>
-                                </div>
-                                <div class="family" id="family">
-                                    <form method="post" action="./booking/guest_reserve.jsp" >
-                                        <div class="form-group">
-                                            <label>Family Name<span class="red-text">*</span></label>
-                                            <input type="text" required="" name="name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email<span class="red-text">*</span></label>
-                                            <input type="email" required="" name="email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone<span class="red-text">*</span></label>
-                                            <input type="text" required="" name="phone">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Country<span class="red-text">*</span></label>
-                                            <select name="country" required="" class="form-control">
-                                                 <option value="">Select Country</option>
-                                                 <% 
-                                                     try{
-
-                                                        Class.forName("com.mysql.jdbc.Driver");
-                                                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
-                                                        Statement stm = conn.createStatement();
-                                                        String sql = "SELECT * FROM countries";
-
-                                                        ResultSet rst = stm.executeQuery(sql);
-
-                                                        while(rst.next()){
-                                                            %>
-                                                            <option value="<%=rst.getString("country_name")  %>"><%=rst.getString("country_name")  %></option>
-                                                            <%
-                                                        }
-
-                                                        }catch(Exception e){
-                                                            out.println(e);
-                                                        }
-                                                  %>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Adults<span class="red-text">*</span></label>
-                                            <input type="number" required="" name="adults">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Children</label>
-                                            <input type="number" name="children">
-                                        </div>
-                                                  <input type="hidden" name="determinant" value="Family">
-                                        <div class="form-group col-1">
-                                            <label>Check In<span class="red-text">*</span></label>
-                                            <input type="date" required="" name="check_in">
-                                        </div>
-                                        <div class="form-group col-1">
-                                            <label>Check_out<span class="red-text">*</span></label>
-                                            <input type="date" required="" name="check_out">
-                                        </div>
-                                        <div class="form-group">
-                                            <%
-                                                if(Integer.parseInt(rs.getString("booked")) == 1 ){
-                                                    %>
-                                                    Cannot be Reserved, <a href="rooms.jsp" class="pink-text" >check another</a>
-                                                    <%
-                                                }else{
-                                                    %>
-                                                    For A <a href="#" class="friendword"> Friend?</a>
-                                                    <a href="./booking.jsp?uid=<%=rs.getString("id")  %>">
-                                                        <input type="submit" 
-                                                               class="btn pull-right pink " 
-                                                               name="guestReserve" 
-                                                               title="reserve for that special family" 
-                                                               value="Request"
-                                                        >
-                                                    </a>
-                                                    <%
-                                                }
-                                            %>
-                                        </div>   
-                                    </form>
-                                </div>
-                            </div>
+                            
                               <!--Display room information-->
-                            <div class="clo-sm-1 col-md-1 col-xs-1 col-xl-1 grey lighten-4"></div>
+                            
                             <div class="col-sm-7 col-md-7 col-xs-7 col-xl-7" style="margin-left: 30px;">
-                                <div class="bg-info" style="height: 50px;" >
-                                    <h5 class="text-capitalize text-wrap text-dark center-align "><%=rs.getString("name")  %> </h5>
+                                <div class="indigo lighten-3" style="height: 50px;" >
+                                    <h5 class="text-capitalize text-wrap white-text center-align "><%=rs.getString("name")  %> </h5>
                                 </div>
-                                <img src="hotel1.png" alt="" height="400" width="600" style="margin-top: 5px; margin-bottom: 5px;"><br>
+                                <div>
+                                 <%
+                                  if(Integer.parseInt(rs.getString("id")) == 1){
+                                      %>
+                                      <img src="images/rooms/room1.jpg" alt="" width="712px" height="400px" />
+                                      <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 2){
+                                    %>
+                                    <img src="images/rooms/room2.jpeg" alt="" width="712px" height="400px"  />
+                                    <%
+                                  }
+                                  else if(Integer.parseInt(rs.getString("id")) == 3){
+                                    %>
+                                    <img src="images/rooms/room3.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }
+                                    else if(Integer.parseInt(rs.getString("id")) == 4){
+                                    %>
+                                    <img src="images/rooms/room4.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 5){
+                                    %>
+                                    <img src="images/rooms/room5.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 6){
+                                    %>
+                                    <img src="images/rooms/room6.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 7){
+                                    %>
+                                    <img src="images/rooms/room7.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 8){
+                                    %>
+                                    <img src="images/rooms/room8.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 9){
+                                    %>
+                                    <img src="images/rooms/room9.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 10){
+                                    %>
+                                    <img src="images/rooms/room10.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 11){
+                                    %>
+                                    <img src="images/rooms/room11.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 12){
+                                    %>
+                                    <img src="images/rooms/room11.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 13){
+                                    %>
+                                    <img src="images/rooms/room13.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 14){
+                                    %>
+                                    <img src="images/rooms/room14.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 15){
+                                    %>
+                                    <img src="images/rooms/room15.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 16){
+                                    %>
+                                    <img src="images/rooms/room16.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 17){
+                                    %>
+                                    <img src="images/rooms/room17.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 18){
+                                    %>
+                                    <img src="images/rooms/room18.jpg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 19){
+                                    %>
+                                    <img src="images/rooms/room19.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 20){
+                                    %>
+                                    <img src="images/rooms/room20.jpeg" alt="" width="712px" height="400px" />
+                                    <%
+                                  }
+                              %>
+                               </div>
+                              <br>
                                 <p><b>Price:</b> <i class="pink-text">FCFA<%=rs.getString("price")  %>/day </i></p>
-                                <p><b>Category:</b> <i class="material-icons prefix teal-text">category</i><%=rs.getString("category")  %> </p>
+                                <p class="right" ><b>Category:</b> <i class="material-icons prefix teal-text">category</i><%=rs.getString("category")  %> </p>
                                 <b>Availability:
                                     <%
                                         if(Integer.parseInt(rs.getString("booked")) == 1 ){
@@ -224,7 +155,7 @@
                                       <%
                                  if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "")) {
                                  %>
-                                 <p>Please login to book room</p>
+                                 <p>Please Create <a href="./Login.jsp" class="orange-text" >Account</a> or <a href="./Login.jsp" class="orange-text" >Login</a> to book room</p>
                                     <%
                                 }else{
                                     %>
@@ -256,11 +187,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class=" col-12">
-
-                                            
-                                           
-                                            <div class="col-sm-12">
+                                        <div class="col-sm-12">
                                                 <%
                                                if(Integer.parseInt(rs.getString("booked")) == 1){
                                                    %>
@@ -327,9 +254,6 @@
                                                }
                                                %>
                                             </div>
-                                            
-                                          
-                                        </div>
                                     </div>
                                     <%
 //                                        }else{
@@ -345,7 +269,32 @@
                                 </div>
                              
                             </div>
-                            <div class="clo-sm-1 col-md-1 col-xs-1 col-xl-1 grey lighten-4"></div>
+                                <div class="clo-sm-1 col-md-1 col-xs-1 col-xl-1 grey lighten-4"></div>
+                                <div class="col-sm-4 col-md-4 col-xs-4 col-xl-4">
+                                    
+                                    <h5>Facilities Added to Room Services </h5>
+                                    <div class="divider"></div>
+                                    <div style="margin-top: 5px;">
+                                        <div class="col-sm-6">
+                                        <img src="images/home/sport.jpg" alt="" width="120px" height="100px;"/>
+                                        Gym/Sports
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="images/home/restaurant.jpg" alt="" width="120px" height="100px;"/>
+                                            Restaurant
+                                            </div>
+                                        <div class="col-sm-6">
+                                            <img src="images/home/sport.jpg" alt="" width="120px" height="100px;"/>
+                                            Gym/Sports
+                                            </div>
+                                        <div class="col-sm-6">
+                                            <img src="images/home/sport.jpg" alt="" width="120px" height="100px;"/>
+                                            Gym/Sports
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
                         </div>
                     </div>      
                 </div>

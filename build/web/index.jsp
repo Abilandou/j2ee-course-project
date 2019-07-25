@@ -53,7 +53,7 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                            <img class="activator" src="images/home/reservation.jpeg" alt="" width="292px;" height="200px;" />
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Room Reservation<i class="material-icons right">more_vert</i></span>
@@ -68,11 +68,11 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                            <img class="activator" src="images/home/booking.jpg" alt="" width="292px;" height="200px;" />
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Booking Services<i class="material-icons right">more_vert</i></span>
-                            <p><a href="#">Ambulance Services</a></p>
+                            <p><a href="#">Booking Services</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Ambulance Services<i class="material-icons right">close</i></span>
@@ -83,7 +83,7 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                            <img class="activator" src="images/home/restaurant.jpg" alt="" width="292px;" height="200px;" />
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Restaurant Services<i class="material-icons right">more_vert</i></span>
@@ -98,7 +98,7 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                            <img class="activator" src="images/home/sport.jpg" alt="" width="292px;" height="200px;" />
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Sport Services<i class="material-icons right">more_vert</i></span>
@@ -113,7 +113,7 @@
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                            <img class="activator" src="images/home/swimming.png" alt="" width="292px;" height="200px;" />
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Swimming Services<i class="material-icons right">more_vert</i></span>
@@ -128,7 +128,7 @@
                 <div class="col-sm-4">
                      <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="images/home/room11.jpg" alt="" width="292px;" height="200px;" />
+                            <img class="activator" src="images/home/luggage.jpg" alt="" width="292px;" height="200px;" />
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Logging Facility<i class="material-icons right">more_vert</i></span>
@@ -183,7 +183,7 @@
                        </p>
                 </div>
                 <div class="col-sm-6">
-                    <img class="activator" src="images/home/room11.jpg" alt="" width="610px;" height="350px;" />
+                    <img class="activator" src="images/home/celebration.jpg" alt="" width="610px;" height="350px;" />
                 </div>
             </div>
         </div>

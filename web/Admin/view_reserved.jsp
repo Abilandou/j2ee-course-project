@@ -143,7 +143,73 @@
                 </div>
             </div>
                             
+                   <%
                  
+               try{
+
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cef502", "godlove", "godlove");
+            
+            if(request.getParameter("tryBut") != null){
+                String check_in, check_out;
+                int number_of_days, amount_due, one_day_cost, days;
+                
+                String date1 =request.getParameter("firstdate");
+
+                String date2 =request.getParameter("seconddate");
+
+                
+                check_in =request.getParameter("check_in");
+
+                check_out =request.getParameter("check_out");
+
+                SimpleDateFormat dateformat = new SimpleDateFormat ("yyy-mm-dd"); //SDF to display output with day of week
+
+                Date displaydate1=new Date(Long.parseLong(check_in)); //Turning the inputed date from string
+                                                   //to date format to be used for the output
+                Date displaydate2=new Date(Long.parseLong(check_out));
+                days = (int) ((displaydate2.getTime() - displaydate1.getTime())/(1000*60*60*24));//common method to calculate number of days
+
+                out.println("Between " +dateformat.format(displaydate1)+ " and " +dateformat.format(displaydate2)+ " there are " +days+ " days");
+
+//                check_in =request.getParameter("check_in");
+//                check_out=request.getParameter("check_out");
+
+                PreparedStatement preparestmnt = null; //Create statement
+                String querry1 = "insert into try(check_in, check_out, days) values(?, ?, ?)";
+                preparestmnt = con.prepareStatement(querry1);
+                
+
+
+                
+//                preparestmnt.setDate(1, displaydate1);
+//                preparestmnt.setDate(2, displaydate2);
+                preparestmnt.setString(1, check_in);
+                preparestmnt.setString(2, check_out);
+                preparestmnt.setInt(3, days);
+
+                preparestmnt.executeUpdate(); //execute query
+                
+                String message = "Reservation made successfully";
+                request.setAttribute("msg", message);
+                response.sendRedirect("./view_reserved.jsp");
+                
+                con.close();
+            }
+            }catch(Exception e){
+                out.println(e);
+            }
+                 
+              %>
+              
+              <form action="view_reserved.jsp" method="post">
+                  <input id="indate" type="date"  name="check_in" class="datepicker">
+                  <input type="date"  name="check_out" class="datepicker">
+                  <input type="hidden" value="days" name="days">
+                  <input id="trying" type="submit" name="tryBut" class="btn" value="Try" />
+
+              </form>
         </div>
     </div>
 </div>

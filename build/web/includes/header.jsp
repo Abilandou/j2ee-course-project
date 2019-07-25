@@ -8,7 +8,7 @@
 <div class="navbar-fixed ">
   <nav class="indigo lighten-1" >
     <div class="nav-wrapper">
-        <a class="navbar-brand" href="index.jsp"><b class="orange-text text-darken-4">CEF502</b></a>
+        <a class="navbar-brand" href="index.jsp"><b class="orange-text text-darken-5" style="font-size:40px;">ABK</b></a>
         <div  style="margin-left: 300px;">
             <ul>
                 <li  style="margin-top: -20px;">(+237) 672-722-945 / 677-443-398<i class="fa fa-phone"></i></li>
@@ -53,7 +53,7 @@
   </nav>
 </div>
 <div class="navbar-fixed ">
-  <nav class=" indigo lighten-1" style="text-align:center;">
+  <nav class=" indigo lighten-1" style="text-align:center; border-top-color: white;">
     <div class="nav-wrapper" style="padding-left:200px; padding-right:60px;" >
       <ul class=" hide-on-med-and-down">
          <li class="nav-item ">

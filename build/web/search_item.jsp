@@ -41,7 +41,93 @@
                     <div class="card hoverable mx-1 col-sm-4"  style="width:350px; height:450px; margin-right: 15px;">
                         <div class="card-image waves-effect waves-block waves-light">
                             <a href="./room_details.jsp?uid=<%=rs.getString("id")  %>" id="add-to-card-button">
-                                <img src="hotel1.png" alt=""/>
+                                <div>
+                            <%
+                                  if(Integer.parseInt(rs.getString("id")) == 1){
+                                      %>
+                                      <img src="images/rooms/room1.jpg" alt=""/>
+                                      <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 2){
+                                    %>
+                                    <img src="images/rooms/room2.jpeg" alt=""/>
+                                    <%
+                                  }
+                                  else if(Integer.parseInt(rs.getString("id")) == 3){
+                                    %>
+                                    <img src="images/rooms/room3.jpeg" alt=""/>
+                                    <%
+                                  }
+                                    else if(Integer.parseInt(rs.getString("id")) == 4){
+                                    %>
+                                    <img src="images/rooms/room4.jpeg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 5){
+                                    %>
+                                    <img src="images/rooms/room5.jpeg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 6){
+                                    %>
+                                    <img src="images/rooms/room6.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 7){
+                                    %>
+                                    <img src="images/rooms/room7.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 8){
+                                    %>
+                                    <img src="images/rooms/room8.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 9){
+                                    %>
+                                    <img src="images/rooms/room9.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 10){
+                                    %>
+                                    <img src="images/rooms/room10.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 11){
+                                    %>
+                                    <img src="images/rooms/room11.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 12){
+                                    %>
+                                    <img src="images/rooms/room11.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 13){
+                                    %>
+                                    <img src="images/rooms/room13.jpeg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 14){
+                                    %>
+                                    <img src="images/rooms/room14.jpeg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 15){
+                                    %>
+                                    <img src="images/rooms/room15.jpeg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 16){
+                                    %>
+                                    <img src="images/rooms/room16.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 17){
+                                    %>
+                                    <img src="images/rooms/room17.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 18){
+                                    %>
+                                    <img src="images/rooms/room18.jpg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 19){
+                                    %>
+                                    <img src="images/rooms/room19.jpeg" alt=""/>
+                                    <%
+                                  }else if(Integer.parseInt(rs.getString("id")) == 20){
+                                    %>
+                                    <img src="images/rooms/room20.jpeg" alt=""/>
+                                    <%
+                                  }
+                              %>
+                            </div>
                             </a>
                         </div>
                         <div class="card-content">
